@@ -1,0 +1,37 @@
+:root {
+  --transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  --font-text: 'Inter', sans-serif;
+  --font-header: 'Playfair Display', serif;
+
+  /* Colors for dark theme */
+  --color-primary: #8fc79a;
+  --color-primary-light: #b8e2c4;
+  --color-bg: #1f2421;
+  --color-surface: #2a2f2c;
+  --color-text: #e8e8e4;
+  --color-text-light: #c7c7c2;
+  --color-border: #3a3f3c;
+}
+
+.theme-light {
+  --color-primary: #7bae7f;
+  --color-primary-light: #a3c9a8;
+  --color-bg: #f7f7f2;
+  --color-surface: #ffffff;
+  --color-text: #2a2a2a;
+  --color-text-light: #555555;
+  --color-border: #dadad4;
+}
+
+body {
+  font-family: var(--font-text);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-header);
+}
