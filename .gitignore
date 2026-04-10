@@ -141,4 +141,5 @@ vite.config.ts.timestamp-*
 # OS files
 .DS_Store
 Thumbs.db
-ehthumbs.dbpackage-lock.json
+ehthumbs.db
+package-lock.json
