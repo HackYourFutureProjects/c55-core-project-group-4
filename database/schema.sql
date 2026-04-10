@@ -1,11 +1,11 @@
+
 CREATE TABLE IF NOT EXISTS cohort_dishes (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
-  strMeal TEXT NOT NULL,
-  strCategory TEXT NOT NULL,
-  strArea TEXT NOT NULL,
-  strInstructions TEXT NOT NULL,
-  strMealThumb TEXT,
+  title TEXT NOT NULL,
+  category TEXT NOT NULL,
+  area TEXT NOT NULL,
+  instructions TEXT NOT NULL,
+  image TEXT,
   ingredients TEXT NOT NULL,
-  added_by TEXT  NOT NULL
+  added_by TEXT NOT NULL
 );
-
