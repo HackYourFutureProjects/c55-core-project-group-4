@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Taste the world with Cohort 55! We’re 19 people from different countries who met in the Netherlands and built a recipe app mixing our own dishes with thousands from MealDB. Search, explore, and save your favorites."
+      content="Taste the world with Cohort 55! We’re people from different countries who met in the Netherlands and built a recipe app mixing our own dishes with thousands from MealDB. Search, explore, and save your favorites."
     />
     <link rel="icon" href="favicon.ico" sizes="any" />
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
@@ -25,29 +25,41 @@
     <title>Cohort 55 Recipes</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
-  <body class="container">
+  <body>
     <header>
-      <a class="logo" href="index.html">
-        <img
-          src="./img/logo.png"
-          alt="Cohort 55 Recipes logo"
-          width="120px"
-          height="120px"
-        />
-      </a>
-      <nav>
-        <li href="#recipes">C55 Recipes</li>
-        <li href="#discover">Discover</li>
-        <li href="favorites">Favorites</li>
-      </nav>
-      <button class="mode" type="button"></button>
+      <div class="container">
+        <a class="header-logo" href="index.html">
+          <img
+            src="./img/logo.png"
+            alt="Cohort 55 Recipes logo"
+            width="120"
+            height="120"
+          />
+        </a>
+        <nav>
+          <ul class="nav-list">
+            <li class="nav-list-item">
+              <a class="nav-list-link" href="#recipes">C55 Recipes</a>
+            </li>
+            <li class="nav-list-item">
+              <a class="nav-list-link" href="#discover">Discover</a>
+            </li>
+            <li class="nav-list-item">
+              <a class="nav-list-link" href="favorites">Favorites</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="mode-btn" type="button"></button>
+      </div>
     </header>
     <main>
-      <section class="hero">
+      <section class="hero container">
         <h1>Taste the World With Cohort 55</h1>
         <img
           src="./img/hero.png"
           alt="Hero illustration for Cohort 55 Recipe App — Taste the World Together"
+          width="260"
+          height="380"
         />
         <p>
           We’re Cohort 55 — 19 people from different corners of the world who
@@ -57,44 +69,92 @@
           ones you love. Welcome to our digital kitchen.
         </p>
       </section>
-      <section id="recipes">
+      <section id="recipes" class="recipes container">
         <h2>Recipes from our cohort</h2>
-
-        <div>
-          <label></label>
-          <input />
+        <div class="recipes-filters">
+          <h3>Filter by</h3>
+          <div>
+            <label for="recipes-added-select">Added by</label>
+            <select
+              id="recipes-added-select"
+              class="recipes-added-select"
+            ></select>
+          </div>
+          <div>
+            <label for="recipes-country-select">Country</label>
+            <select
+              id="recipes-country-select"
+              class="recipes-country-select"
+            ></select>
+          </div>
         </div>
-        <div>
-          <label></label>
-          <input />
-        </div>
 
-        <ul class="list-cohort"></ul>
+        <ul class="recipes-list"></ul>
       </section>
-      <section id="discover">
+      <section id="discover" class="discover container">
         <h2>Discover more recipes</h2>
         <div>
-          <label></label>
-          <input />
+          <label for="discover-dish-input">Search by dish name:</label>
+          <input
+            id="discover-dish-input"
+            type="text"
+            class="discover-dish-input"
+          />
+          <button type="button" class="discover-dish-btn">Search</button>
         </div>
         <div>
-          <label></label>
-          <input />
+          <h3>Filter by</h3>
+          <div>
+            <label for="discover-category-select">Category</label>
+            <select
+              id="discover-category-select"
+              class="discover-category-select"
+            ></select>
+          </div>
+          <div>
+            <label for="discover-country-select" class="discover-country-select"
+              >Country</label
+            >
+            <select id="discover-country-select"></select>
+          </div>
+          <div>
+            <label for="discover-ingredients-select">Ingredients</label>
+            <select
+              id="discover-ingredients-select"
+              class="discover-ingredients-select"
+            ></select>
+          </div>
         </div>
+        <ul class="discover-list"></ul>
         <div>
-          <label></label>
-          <input />
+          <p class="discover-random-text">
+            Not sure what to cook today? Try your luck!
+          </p>
+          <button class="discover-random-btn" type="button">
+            Surprise me with a recipe
+          </button>
         </div>
-        <div>
-          <label></label>
-        </div>
-        <ul class="list-mealdb"></ul>
       </section>
-      <section id="favorites">
+      <section id="favorites" class="favorites container">
         <h2>Your favorites</h2>
+        <p class="favorites-empty">You still don't have a favorite recipe</p>
+        <ul class="favorites-list"></ul>
       </section>
     </main>
-    <footer></footer>
+    <footer>
+      <div class="container">
+        <p class="footer-text">
+          HackYourFuture · Cohort 55 · Project Group 4 · 2026
+        </p>
+        <a
+          class="footer-adress"
+          href="https://maps.app.goo.gl/68oWnU8zhf1WEieC7"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Netherlands, Amsterdam (A-Lab)
+        </a>
+      </div>
+    </footer>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
