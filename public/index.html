@@ -3,27 +3,98 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
+    <meta
+      name="description"
+      content="Taste the world with Cohort 55! We’re 19 people from different countries who met in the Netherlands and built a recipe app mixing our own dishes with thousands from MealDB. Search, explore, and save your favorites."
     />
-    <title>Recipe App</title>
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/modern-normalize@2.0.0/modern-normalize.min.css"
+    />
+    <title>Cohort 55 Recipes</title>
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body class="container">
-    <div id="app"></div>
-    <h1>Hello</h1>
-    <ul>
-      <li>cat</li>
-      <li>dog</li>
-      <li>fox</li>
-    </ul>
+    <header>
+      <a class="logo" href="index.html">
+        <img
+          src="./img/logo.png"
+          alt="Cohort 55 Recipes logo"
+          width="120px"
+          height="120px"
+        />
+      </a>
+      <nav>
+        <li href="#recipes">C55 Recipes</li>
+        <li href="#discover">Discover</li>
+        <li href="favorites">Favorites</li>
+      </nav>
+      <button class="mode" type="button"></button>
+    </header>
+    <main>
+      <section class="hero">
+        <h1>Taste the World With Cohort 55</h1>
+        <img
+          src="./img/hero.png"
+          alt="Hero illustration for Cohort 55 Recipe App — Taste the World Together"
+        />
+        <p>
+          We’re Cohort 55 — 19 people from different corners of the world who
+          met in the Netherlands to learn IT and ended up sharing much more than
+          code. This app brings together our personal recipes and thousands more
+          from MealDB. Explore global flavors, discover new dishes, and save the
+          ones you love. Welcome to our digital kitchen.
+        </p>
+      </section>
+      <section id="recipes">
+        <h2>Recipes from our cohort</h2>
+
+        <div>
+          <label></label>
+          <input />
+        </div>
+        <div>
+          <label></label>
+          <input />
+        </div>
+
+        <ul class="list-cohort"></ul>
+      </section>
+      <section id="discover">
+        <h2>Discover more recipes</h2>
+        <div>
+          <label></label>
+          <input />
+        </div>
+        <div>
+          <label></label>
+          <input />
+        </div>
+        <div>
+          <label></label>
+          <input />
+        </div>
+        <div>
+          <label></label>
+        </div>
+        <ul class="list-mealdb"></ul>
+      </section>
+      <section id="favorites">
+        <h2>Your favorites</h2>
+      </section>
+    </main>
+    <footer></footer>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
