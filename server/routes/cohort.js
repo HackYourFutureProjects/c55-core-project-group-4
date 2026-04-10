@@ -37,4 +37,38 @@ router.get('/:id', (req, res) => {
   }
 });
 
+// GET /api/cohort/area/:area — filter by country
+router.get('/area/:area', (req, res) => {
+  try {
+    const area = db
+      .prepare('SELECT * FROM cohort_dishes WHERE area = ?')
+      .all(req.params.area);
+    res.json(area);
+  } catch {
+    res.status(500).json({ error: 'Failed to fetch dishes' });
+  }
+});
+
+router.get('/title/:title', (req, res) => {
+  try {
+    const title = db
+      .prepare('SELECT * FROM cohort_dishes WHERE title = ?')
+      .all(req.params.title);
+    res.json(title);
+  } catch {
+    res.status(500).json({ error: 'Failed to fetch dishes' });
+  }
+});
+
+router.get('/added_by/:added_by', (req, res) => {
+  try {
+    const added_by = db
+      .prepare('SELECT * FROM cohort_dishes WHERE added_by = ?')
+      .all(req.params.added_by);
+    res.json(added_by);
+  } catch {
+    res.status(500).json({ error: 'Failed to fetch name' });
+  }
+});
+
 export default router;
