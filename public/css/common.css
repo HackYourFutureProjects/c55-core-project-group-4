@@ -12,6 +12,7 @@
   --color-text: #e8e8e4;
   --color-text-light: #c7c7c2;
   --color-border: #3a3f3c;
+  --color-bg-overlay: rgba(46, 47, 66, 0.4);
 }
 
 .theme-light {
