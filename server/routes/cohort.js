@@ -31,7 +31,7 @@ router.get('/:id', (req, res) => {
 
     // Send the dish as JSON response
     res.json(dish);
-  } catch (error) {
+  } catch {
     // If database fails — return 500 error
     res.status(500).json({ error: 'Failed to fetch dish' });
   }
