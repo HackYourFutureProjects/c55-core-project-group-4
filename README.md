@@ -58,3 +58,14 @@ Both must pass before a PR can be merged. The workflow is defined in [`.github/w
 
 ***
 
+### CD / Deployment
+
+The app is deployed on Render:
+[https://c55-core-project-group-4.onrender.com](https://c55-core-project-group-4.onrender.com)
+
+Because this project uses the **Render Free Tier**, the service can go to sleep when idle. On the first request after inactivity, it may take around **30-60 seconds** to wake up.
+
+To reduce this delay, an external cron job is configured to periodically ping the app and help keep the service awake.
+
+***
+
