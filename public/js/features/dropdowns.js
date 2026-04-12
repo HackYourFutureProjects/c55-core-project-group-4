@@ -1,5 +1,10 @@
+import {
+  getAreas,
+  getCategories,
+  getIngredients,
+} from '../../../server/routes/recipes.js';
 import { createSelectOption } from '../components/createSelectOption.js';
-import { getAreas, getCategories, getIngredients } from '../services/MealDB.js';
+
 import { createPlaceholderOption } from './helpers.js';
 
 export async function renderCategoryOptionMealDB() {
