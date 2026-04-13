@@ -16,7 +16,8 @@ The app is a **single-page application** with three main sections:
 
 - **Recipes:** Browse and search recipes from *TheMealDB API*. Filter by category (e.g., chicken, dessert, vegetarian) and view detailed recipes with full ingredients and instructions.  
 - **Cohort Dishes:** A hand-picked list of favorite dishes from c55 members, each showing a photo, country of origin, and complete recipe. These entries are stored in an **SQLite database**.  
-- **Saved:** A personal list where users can save recipes (from both TheMealDB and cohort dishes) by clicking the ⭐ Save button. Saved recipes are also stored locally in the database.
+- **Saved:** A personal list where users can save recipes (from both TheMealDB and cohort dishes) by clicking the ⭐ Save button. Saved recipes are stored in localStorage.
+- **LLM** Chatbot
 
 ***
 
@@ -61,7 +62,7 @@ Both must pass before a PR can be merged. The workflow is defined in [`.github/w
 ### CD / Deployment
 
 The app is deployed on Render:
-[https://c55-core-project-group-4.onrender.com](https://c55-core-project-group-4.onrender.com)
+[https://c55-core-project-group-4-cookbook.onrender.com/](https://c55-core-project-group-4-cookbook.onrender.com/)
 
 Because this project uses the **Render Free Tier**, the service can go to sleep when idle. On the first request after inactivity, it may take around **30-60 seconds** to wake up.
 
