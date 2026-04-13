@@ -4,10 +4,12 @@ import express from 'express';
 // Create a new router instance for cohort routes
 const router = express.Router();
 
-const openai = new OpenAI({
-  baseURL: 'https://models.github.ai/inference/',
-  apiKey: process.env.GITHUB_TOKEN,
-});
+function getOpenAIClient() {
+  return new OpenAI({
+    baseURL: 'https://models.github.ai/inference/',
+    apiKey: process.env.GITHUB_TOKEN,
+  });
+}
 
 const prompt = `You are a helpful recipe assistant. 
 You help users find recipe ideas and cooking suggestions.
@@ -21,6 +23,7 @@ Rules:
 // POST /api/chat
 router.post('/', async (req, res) => {
   try {
+      const openai = getOpenAIClient();
     // Get the user's message from the request body
     const { userMessage } = req.body;
 
