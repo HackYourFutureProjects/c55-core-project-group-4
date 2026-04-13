@@ -11,24 +11,6 @@ VALUES
   'Yusup'
   ),
 (
-  'Laghman (Hand-pulled Noodles)',
-  'Main dish',
-  'Chinese',
-  'Boil the noodles until tender and set aside. In a wok or pan, heat oil and fry the meat until browned. Add onion, garlic, carrot, and bell pepper, stir-frying for a few minutes. Add tomatoes and soy sauce, season with salt, pepper, and chili flakes, and simmer for 5–7 minutes until the sauce thickens. Toss the noodles with the sauce or serve the sauce on top. Garnish with fresh cilantro before serving.',
-  NULL,
-  '[{"ingredient": "beef or lamb", "measure": "300g"}, {"ingredient": "hand-pulled noodles", "measure": "300g"}, {"ingredient": "tomatoes", "measure": "2 pcs"}, {"ingredient": "bell pepper", "measure": "1 pcs"}, {"ingredient": "onion", "measure": "1 pcs"}, {"ingredient": "carrot", "measure": "1 pcs"}, {"ingredient": "garlic", "measure": "2 cloves"}, {"ingredient": "soy sauce", "measure": "2 tbsp"}, {"ingredient": "vegetable oil", "measure": "2 tbsp"}, {"ingredient": "chili flakes", "measure": "1 tsp"}, {"ingredient": "salt and pepper", "measure": "to taste"}]',
-  'Yusup'
-),
-(
-  'Dapanji (Big Plate Chicken)',
-  'Main dish',
-  'Chinese',
-  'Heat oil in a wok or deep pan. Add chicken pieces and fry until lightly browned. Add onion, garlic, and chili paste, stir well, then add tomatoes, soy sauce, sugar, salt, and pepper. Pour in water and simmer for about 20 minutes. Add potatoes and bell peppers, cook until potatoes are soft and sauce slightly thickens. Serve hot with hand-pulled noodles or rice.',
-  NULL,
-  '[{"ingredient": "chicken", "measure": "600g"}, {"ingredient": "potatoes", "measure": "2 pcs"}, {"ingredient": "green bell pepper", "measure": "1 pcs"}, {"ingredient": "red bell pepper", "measure": "1 pcs"}, {"ingredient": "tomatoes", "measure": "2 pcs"}, {"ingredient": "onion", "measure": "1 pcs"}, {"ingredient": "garlic", "measure": "2 cloves"}, {"ingredient": "chili paste", "measure": "2 tbsp"}, {"ingredient": "soy sauce", "measure": "2 tbsp"}, {"ingredient": "sugar", "measure": "1 tbsp"}, {"ingredient": "water", "measure": "200ml"}, {"ingredient": "vegetable oil", "measure": "100ml"}, {"ingredient": "salt and pepper", "measure": "to taste"}]',
-  'Yusup'
-),
-(
   'Grilled Kobbeh',
   'Meat dish',
   'Syrian',
@@ -53,7 +35,7 @@ VALUES
   'Heat oil in a pot and fry sliced onions until golden brown. Add cumin seeds, cloves, cardamom, cinnamon, and bay leaf, sauté for a minute. Add ginger-garlic paste and cook until fragrant. Add chicken and cook until lightly browned. Add tomatoes, salt, pepper, turmeric, and green chilies, cook until tomatoes soften. Add water and bring to a boil. Add washed rice, cover and cook on low heat until rice is tender and water is absorbed. Sprinkle garam masala and garnish with fresh coriander.',
   NULL,
   '[{"ingredient": "chicken", "measure": "500g"}, {"ingredient": "rice", "measure": "2 cups"}, {"ingredient": "water", "measure": "4 cups"}, {"ingredient": "onion", "measure": "1 pcs"}, {"ingredient": "tomatoes", "measure": "2 pcs"}, {"ingredient": "oil or ghee", "measure": "2 tbsp"}, {"ingredient": "ginger-garlic paste", "measure": "1 tbsp"}, {"ingredient": "cumin seeds", "measure": "1 tsp"}, {"ingredient": "cloves", "measure": "4 pcs"}, {"ingredient": "cardamom pods", "measure": "2 pcs"}, {"ingredient": "cinnamon stick", "measure": "1 pcs"}, {"ingredient": "bay leaf", "measure": "1 pcs"}, {"ingredient": "turmeric powder", "measure": "0.5 tsp"}, {"ingredient": "garam masala", "measure": "1 tsp"}, {"ingredient": "salt and pepper", "measure": "to taste"}]',
-  'Atiqа'
+  'Atiqa'
 ), 
 (
   'Borscht',
@@ -72,6 +54,69 @@ VALUES
   'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Kabab_koobideh.jpg/640px-Kabab_koobideh.jpg',
   '[{"ingredient": "ground lamb", "measure": "1kg"}, {"ingredient": "onion", "measure": "180-220g"}, {"ingredient": "salt", "measure": "to taste"}, {"ingredient": "black pepper", "measure": "to taste"}]',
   'Hamed'
+),
+(
+  'Syrnyky (Ukrainian Cottage Cheese Pancakes)',
+  'Breakfast',
+  'Ukrainian',
+  'Mix the cottage cheese, egg, sugar, vanilla sugar, and a pinch of salt in a bowl. Combine well using a fork or masher until smooth. Add 3 heaped tablespoons of flour and mix again until you get a soft, dough-like consistency. If the cottage cheese is very moist, add one more tablespoon of flour. Sprinkle some flour on a board. Lightly oil your hands and take about 50–60 g of the mixture. Shape small round patties about 4 cm in diameter and 2 cm thick. Place them on the floured board so they do not touch each other. Coat each syrnyk in flour on all sides to help them keep their shape. Heat a pan with 3–4 tbsp of sunflower oil over medium heat. Place the syrnyky in the pan and fry until golden on both sides. It usually takes about 2 minutes per side, depending on their size and your stove. Transfer the cooked syrnyky onto a plate lined with a paper towel to absorb excess oil. Serve warm. They are delicious on their own, but a spoonful of thick sour cream makes them even better.',
+  NULL,
+  '[{"ingredient": "cottage cheese (9% fat)", "measure": "400-500g"}, {"ingredient": "egg", "measure": "1 pcs"}, {"ingredient": "sugar", "measure": "3 tbsp"}, {"ingredient": "vanilla sugar", "measure": "10g"}, {"ingredient": "salt", "measure": "pinch"}, {"ingredient": "flour", "measure": "100g"}, {"ingredient": "sunflower oil", "measure": "3-4 tbsp"}]',
+  'Yana'
+),
+(
+  'Mjadara',
+  'Rice',
+  'Levant',
+  'Add washed lentils to pot with boiling water and let boil for about 10 minutes. Add washed rice with salt, cumin, and optional bouillon cube. Let cook covered for about 10 minutes. While the rice cooks, sauté sliced onions in olive oil over medium heat. Toss the onions occasionally to avoid them burning. When ready, serve mjadara topped with caramelized onions, cumin, chopped parsley and a drizzle of olive oil. Extra yummy with a side of fattoush salad or yogurt-cucumber salad.',
+  NULL,
+  '[{"ingredient": "green lentils", "measure": "1 cup"}, {"ingredient": "short-grain rice", "measure": "1 cup"}, {"ingredient": "water", "measure": "4 cups"}, {"ingredient": "onions", "measure": "2 pcs"}, {"ingredient": "olive oil", "measure": "to taste"}, {"ingredient": "cumin", "measure": "2 tbsp"}, {"ingredient": "parsley", "measure": "for garnish"}, {"ingredient": "salt", "measure": "to taste"}]',
+  'Jawad'
+),
+(
+  'Chicken Kabsa',
+  'Main dish',
+  'Saudi Arabian',
+  'Heat the oil in a pot, then add the chopped onion and cook until soft. Add the garlic, tomatoes, and tomato paste and stir well. Add the chicken pieces and cook until lightly browned. Add the spices: salt, pepper, kabsa spices, turmeric, cinnamon, bay leaves, and cardamom. Pour in the water or broth and bring to a boil, then reduce the heat and let it simmer for 25–30 minutes. Remove the chicken temporarily, then add the washed rice to the broth. Place the chicken on top of the rice and let it cook on low heat until the rice is fully cooked.',
+  NULL,
+  '[{"ingredient": "whole chicken", "measure": "1-1.2kg"}, {"ingredient": "basmati rice", "measure": "2 cups"}, {"ingredient": "onion", "measure": "1 pcs"}, {"ingredient": "tomatoes", "measure": "2 pcs"}, {"ingredient": "tomato paste", "measure": "2 tbsp"}, {"ingredient": "garlic", "measure": "3 cloves"}, {"ingredient": "water or chicken broth", "measure": "3 cups"}, {"ingredient": "vegetable oil", "measure": "2 tbsp"}, {"ingredient": "kabsa spices", "measure": "1 tsp"}, {"ingredient": "turmeric", "measure": "0.5 tsp"}, {"ingredient": "cinnamon stick", "measure": "1 pcs"}, {"ingredient": "bay leaves", "measure": "2 pcs"}, {"ingredient": "cardamom pods", "measure": "2 pcs"}, {"ingredient": "black pepper", "measure": "0.5 tsp"}, {"ingredient": "salt", "measure": "to taste"}]',
+  'Mohammed Alfaqih'
+),
+(
+  'Mukimo',
+  'Main dish',
+  'Kenyan',
+  'Peel and cut potatoes into chunks, place in a large pot, cover with salted water and bring to a boil. Cook until halfway tender. Add corn kernels and peas to the pot and continue boiling until everything is fork-tender. Drain the vegetables, reserving a little of the cooking water. Return to the pot and mash until smooth, adding a splash of reserved water as needed to reach desired texture. Meanwhile, heat oil in a pan over medium heat and sauté sliced onions until soft and golden. Stir the sautéed onions into the mash. Optionally blend pumpkin leaves or spinach and stir into the mixture for colour and extra nutrition. Season with salt and pepper to taste. Serve warm as a side dish alongside beef stew, chicken stew, or other protein dishes.',
+  NULL,
+  '[{"ingredient": "potatoes", "measure": "4 large"}, {"ingredient": "corn kernels", "measure": "1 cup"}, {"ingredient": "green peas", "measure": "1 cup"}, {"ingredient": "pumpkin leaves or spinach", "measure": "2 cups"}, {"ingredient": "onion", "measure": "1 pcs"}, {"ingredient": "butter or olive oil", "measure": "2 tbsp"}, {"ingredient": "salt and pepper", "measure": "to taste"}]',
+  'Hannah'
+),
+(
+  'Laghman (Hand-pulled Noodles)',
+  'Main dish',
+  'Chinese',
+  'Boil the noodles until tender and set aside. In a wok or pan, heat oil and fry the meat until browned. Add onion, garlic, carrot, and bell pepper, stir-frying for a few minutes. Add tomatoes and soy sauce, season with salt, pepper, and chili flakes, and simmer for 5–7 minutes until the sauce thickens. Toss the noodles with the sauce or serve the sauce on top. Garnish with fresh cilantro before serving.',
+  NULL,
+  '[{"ingredient": "beef or lamb", "measure": "300g"}, {"ingredient": "hand-pulled noodles", "measure": "300g"}, {"ingredient": "tomatoes", "measure": "2 pcs"}, {"ingredient": "bell pepper", "measure": "1 pcs"}, {"ingredient": "onion", "measure": "1 pcs"}, {"ingredient": "carrot", "measure": "1 pcs"}, {"ingredient": "garlic", "measure": "2 cloves"}, {"ingredient": "soy sauce", "measure": "2 tbsp"}, {"ingredient": "vegetable oil", "measure": "2 tbsp"}, {"ingredient": "chili flakes", "measure": "1 tsp"}, {"ingredient": "salt and pepper", "measure": "to taste"}]',
+  'Yusup'
+),
+(
+  'Easter Paska',
+  'Traditional Easter bread',
+  'Ukrainian',
+  'Put the yeast, 1 tablespoon of sugar, and a little warm milk in a bowl. Leave it for 10 minutes. In a large bowl, mix the flour, sugar, vanilla sugar, and salt. Add the eggs, melted butter, yeast mixture, and the rest of the warm milk. Mix everything well and knead the dough until it becomes soft and smooth. Add the raisins and knead again. Cover the dough and leave it in a warm place for about 1 hour, until it gets bigger. Put the dough into a baking form and let it rise again for 30–40 minutes. Brush the top with egg yolk mixed with milk. Bake at 180°C for about 30–40 minutes, until golden brown. Let it cool before serving.',
+  NULL,
+  '[{"ingredient": "flour", "measure": "500g"}, {"ingredient": "warm milk", "measure": "200ml"}, {"ingredient": "eggs", "measure": "2 pcs"}, {"ingredient": "sugar", "measure": "80g"}, {"ingredient": "butter", "measure": "80g"}, {"ingredient": "dry yeast", "measure": "7g"}, {"ingredient": "vanilla sugar", "measure": "1 packet"}, {"ingredient": "salt", "measure": "0.25 tsp"}, {"ingredient": "raisins", "measure": "100g"}, {"ingredient": "egg yolk", "measure": "1 pcs"}, {"ingredient": "milk for brushing", "measure": "1 tbsp"}]',
+  'Halyna'
+),
+(
+  'Dapanji (Big Plate Chicken)',
+  'Main dish',
+  'Chinese',
+  'Heat oil in a wok or deep pan. Add chicken pieces and fry until lightly browned. Add onion, garlic, and chili paste, stir well, then add tomatoes, soy sauce, sugar, salt, and pepper. Pour in water and simmer for about 20 minutes. Add potatoes and bell peppers, cook until potatoes are soft and sauce slightly thickens. Serve hot with hand-pulled noodles or rice.',
+  NULL,
+  '[{"ingredient": "chicken", "measure": "600g"}, {"ingredient": "potatoes", "measure": "2 pcs"}, {"ingredient": "green bell pepper", "measure": "1 pcs"}, {"ingredient": "red bell pepper", "measure": "1 pcs"}, {"ingredient": "tomatoes", "measure": "2 pcs"}, {"ingredient": "onion", "measure": "1 pcs"}, {"ingredient": "garlic", "measure": "2 cloves"}, {"ingredient": "chili paste", "measure": "2 tbsp"}, {"ingredient": "soy sauce", "measure": "2 tbsp"}, {"ingredient": "sugar", "measure": "1 tbsp"}, {"ingredient": "water", "measure": "200ml"}, {"ingredient": "vegetable oil", "measure": "100ml"}, {"ingredient": "salt and pepper", "measure": "to taste"}]',
+  'Yusup'
 );
 
   

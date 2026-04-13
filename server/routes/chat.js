@@ -36,7 +36,7 @@ router.post('/', async (req, res) => {
     const content = response.choices[0].message.content;
     // Send the reply back to the frontend
     res.json({ reply: content });
-  } catch (error) {
+  } catch {
     res.status(500).json({ error: 'Failed to get AI response' });
   }
 });
