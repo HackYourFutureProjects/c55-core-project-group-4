@@ -18,7 +18,7 @@ export const renderCohortRecipes = async () => {
 
     card.addEventListener('click', async () => {
       const recipeInfo = await fetchCohortRecipeById(recipe.id);
-      openRecipeModal(recipeInfo);
+      openRecipeModal(recipeInfo, 'cohort');
     });
     list.append(card);
   });

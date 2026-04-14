@@ -31,7 +31,28 @@ export const fetchCohortByTitle = async (title) => {
   return res.json();
 };
 
-export const fetchCohortByAddedBy = async (name) => {
+export const fetchCohortByAdded = async (name) => {
   const res = await fetch(`/api/cohort/added_by/${name}`);
   return res.json();
+};
+
+export const getDishNameOptionsCohort = async () => {
+  const recipes = await fetchAllCohortRecipes();
+  // Using Set to remove duplicate values. Set is a built‑in JS structure. That automatically keeps only unique items
+  const options = [...new Set(recipes.map((recipe) => recipe.title).sort())];
+  return options;
+};
+
+export const getAddedByOptionsCohort = async () => {
+  const recipes = await fetchAllCohortRecipes();
+  const options = [...new Set(recipes.map((recipe) => recipe.added_by).sort())];
+
+  return options;
+};
+
+export const getCountryOptionsCohort = async () => {
+  const recipes = await fetchAllCohortRecipes();
+
+  const options = [...new Set(recipes.map((recipe) => recipe.area).sort())];
+  return options;
 };
