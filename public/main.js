@@ -4,6 +4,7 @@ import {
   initIngredientFilters,
 } from './js/events/handlerFiltersMealDB.js';
 import { initRandomRecipe } from './js/events/handlerRandomRecipe.js';
+import { initSearchByDishName } from './js/events/handlerSearchByDishName.js';
 import {
   renderCategoryOptionMealDB,
   renderCountryOptionMealDB,
@@ -20,4 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   initIngredientFilters();
 
   initRandomRecipe();
+
+  initSearchByDishName();
 });

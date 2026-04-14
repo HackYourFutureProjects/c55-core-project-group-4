@@ -21,6 +21,7 @@ export const resetOtherSelects = (expectId) => {
     '#discover-category-select',
     '#discover-country-select',
     '#discover-ingredients-select',
+    '#discover-dish-input',
   ];
 
   selects

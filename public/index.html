@@ -93,15 +93,19 @@
       </section>
       <section id="discover" class="discover container">
         <h2>Discover more recipes</h2>
-        <div>
+        <form class="discover-search-form">
           <label for="discover-dish-input">Search by dish name:</label>
           <input
             id="discover-dish-input"
             type="text"
             class="discover-dish-input"
+            required
+            minlength="2"
+            maxlength="15"
+            placeholder="Enter dish name..."
           />
-          <button type="button" class="discover-dish-btn">Search</button>
-        </div>
+          <button type="submit" class="discover-dish-btn">Search</button>
+        </form>
         <div>
           <h3>Filter by</h3>
           <div>
