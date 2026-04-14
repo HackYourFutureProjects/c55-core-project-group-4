@@ -5,6 +5,7 @@ import {
 } from './js/events/handlerFiltersMealDB.js';
 import { initRandomRecipe } from './js/events/handlerRandomRecipe.js';
 import { initSearchByDishName } from './js/events/handlerSearchByDishName.js';
+import { renderCohortRecipes } from './js/features/cohortRecipes.js';
 import {
   renderCategoryOptionMealDB,
   renderCountryOptionMealDB,
@@ -12,6 +13,7 @@ import {
 } from './js/features/renderDropdowns.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  await renderCohortRecipes();
   await renderCategoryOptionMealDB();
   await renderCountryOptionMealDB();
   await renderIngredientsOptionMealDB();

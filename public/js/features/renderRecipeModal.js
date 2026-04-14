@@ -51,3 +51,5 @@ export const openRecipeModalById = async (id) => {
   const recipe = await getMealById(id);
   if (recipe) openRecipeModal(recipe);
 };
+
+
