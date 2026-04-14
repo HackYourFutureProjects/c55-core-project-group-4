@@ -1,19 +1,31 @@
 import { createElement } from '../components/createElement.js';
 import { createRecipeInfoCard } from '../components/createRecipeInfoCard.js';
 import { getMealById } from '../services/mealdb.js';
+import { isRecipeSaved, toggleFavorite } from '../services/favorites.js';
 
 const modalOverlay = document.querySelector('.modal-overlay');
 const modal = document.querySelector('.modal');
 const closeModalBtn = document.querySelector('.close-btn');
 const container = document.querySelector('.recipe-card-container');
 
-export const openRecipeModal = (recipe) => {
+function getFavoriteButtontext(recipe, source) {
+  return isRecipeSaved(recipe.id)
+    ? 'Remove from favorites'
+    : 'Add to favorites';
+}
+
+export const openRecipeModal = (recipe, source = 'MealDB') => {
   container.replaceChildren();
   const card = createRecipeInfoCard(recipe);
 
   const favBtn = createElement('button', {
     className: 'recipe-save-btn',
-    text: 'Add to favorites',
+    text: getFavoriteButtontext(recipe, source),
+  });
+
+  favBtn.addEventListener('click', () => {
+    toggleFavorite(recipe, source);
+    favBtn.textContent = getFavoriteButtontext(recipe, source);
   });
 
   // Here will be the logic for adding/removing from favorites
@@ -51,5 +63,3 @@ export const openRecipeModalById = async (id) => {
   const recipe = await getMealById(id);
   if (recipe) openRecipeModal(recipe);
 };
-
-
