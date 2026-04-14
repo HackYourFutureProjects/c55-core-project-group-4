@@ -15,6 +15,7 @@ const createImage = (recipe) =>
         className: 'recipe-list-img',
         src: recipe.image,
         alt: recipe.title,
+        width: '40',
       })
     : null;
 
