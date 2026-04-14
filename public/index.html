@@ -39,13 +39,13 @@
         <nav>
           <ul class="nav-list">
             <li class="nav-list-item">
-              <a class="nav-list-link" href="#recipes">C55 Recipes</a>
+              <a class="nav-list-link" href="#cohort">C55 Recipes</a>
             </li>
             <li class="nav-list-item">
               <a class="nav-list-link" href="#discover">Discover</a>
             </li>
             <li class="nav-list-item">
-              <a class="nav-list-link" href="favorites">Favorites</a>
+              <a class="nav-list-link" href="#favorites">Favorites</a>
             </li>
           </ul>
         </nav>
@@ -69,39 +69,43 @@
           ones you love. Welcome to our digital kitchen.
         </p>
       </section>
-      <section id="recipes" class="recipes container">
+      <section id="cohort" class="cohort container">
         <h2>Recipes from our cohort</h2>
-        <div class="recipes-filters">
+        <div class="cohort-filters">
           <h3>Filter by</h3>
           <div>
-            <label for="recipes-added-select">Added by</label>
+            <label for="cohort-added-select">Added by</label>
             <select
-              id="recipes-added-select"
-              class="recipes-added-select"
+              id="cohort-added-select"
+              class="cohort-added-select"
             ></select>
           </div>
           <div>
-            <label for="recipes-country-select">Country</label>
+            <label for="cohort-country-select">Country</label>
             <select
-              id="recipes-country-select"
-              class="recipes-country-select"
+              id="cohort-country-select"
+              class="cohort-country-select"
             ></select>
           </div>
         </div>
 
-        <ul class="recipes-list"></ul>
+        <ul class="cohort-list"></ul>
       </section>
       <section id="discover" class="discover container">
         <h2>Discover more recipes</h2>
-        <div>
+        <form class="discover-search-form">
           <label for="discover-dish-input">Search by dish name:</label>
           <input
             id="discover-dish-input"
             type="text"
             class="discover-dish-input"
+            required
+            minlength="2"
+            maxlength="15"
+            placeholder="Enter dish name..."
           />
-          <button type="button" class="discover-dish-btn">Search</button>
-        </div>
+          <button type="submit" class="discover-dish-btn">Search</button>
+        </form>
         <div>
           <h3>Filter by</h3>
           <div>
@@ -159,9 +163,7 @@
     <div class="modal-overlay">
       <div class="modal">
         <button class="close-btn" type="button">Х</button>
-        <div class="recipe-card-container">
-          <button class="recipe-save-btn">Add to favorites</button>
-        </div>
+        <div class="recipe-card-container"></div>
       </div>
     </div>
 
