@@ -1,11 +1,28 @@
 import {
+  initCategoryFilters,
+  initCountryFilters,
+  initIngredientFilters,
+} from './js/events/handlerFiltersMealDB.js';
+import { initRandomRecipe } from './js/events/handlerRandomRecipe.js';
+import { initSearchByDishName } from './js/events/handlerSearchByDishName.js';
+import { renderCohortRecipes } from './js/features/cohortRecipes.js';
+import {
   renderCategoryOptionMealDB,
   renderCountryOptionMealDB,
   renderIngredientsOptionMealDB,
-} from './js/features/dropdowns.js';
+} from './js/features/renderDropdowns.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+  await renderCohortRecipes();
   await renderCategoryOptionMealDB();
-  renderCountryOptionMealDB();
-  renderIngredientsOptionMealDB();
+  await renderCountryOptionMealDB();
+  await renderIngredientsOptionMealDB();
+
+  initCategoryFilters();
+  initCountryFilters();
+  initIngredientFilters();
+
+  initRandomRecipe();
+
+  initSearchByDishName();
 });
