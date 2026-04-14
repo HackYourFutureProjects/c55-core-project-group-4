@@ -30,7 +30,7 @@ export const openRecipeModal = (recipe, source = 'MealDB') => {
   });
 
   favBtn.addEventListener('click', () => {
-    toggleFavorite(recipe, source);
+    toggleFavourite(recipe, source);
     // update button text after toggle
     favBtn.textContent = getFavoriteButtontext(recipe, source);
   });
