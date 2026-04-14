@@ -1,11 +1,28 @@
 import { createElement } from './createElement.js';
 
-export function createListCard(recipe) {
-  const li = createElement('li', {
-    className: 'recipe-card',
-    html: `<h3>${recipe.title}</h3><img src="${recipe.image}" alt="${recipe.title}"/>`,
+const createCard = (recipe) =>
+  createElement('li', {
+    className: 'recipe-list-card',
     dataset: { id: recipe.id },
   });
 
-  return li;
-}
+const createTitle = (recipe) =>
+  recipe.title ? createElement('h3', { text: recipe.title }) : null;
+
+const createImage = (recipe) =>
+  recipe.image && recipe.title
+    ? createElement('img', {
+        className: 'recipe-list-img',
+        src: recipe.image,
+        alt: recipe.title,
+      })
+    : null;
+
+export const createListCard = (recipe) => {
+  const card = createCard(recipe);
+  const title = createTitle(recipe);
+  const image = createImage(recipe);
+  card.append(...[title, image].filter(Boolean));
+
+  return card;
+};

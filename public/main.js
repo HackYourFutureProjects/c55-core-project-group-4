@@ -6,6 +6,6 @@ import {
 
 document.addEventListener('DOMContentLoaded', async () => {
   await renderCategoryOptionMealDB();
-  renderCountryOptionMealDB();
-  renderIngredientsOptionMealDB();
+  await renderCountryOptionMealDB();
+  await renderIngredientsOptionMealDB();
 });
