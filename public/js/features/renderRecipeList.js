@@ -1,11 +1,19 @@
 import { createListCard } from '../components/createRecipeListCard.js';
+import { openRecipeModalById } from './renderRecipeModal.js';
 
-export const renderRecipeList = (recipes) => {
-  const list = document.querySelector('.discover-list');
+export const renderRecipeList = (recipes, listClass) => {
+  const list = document.querySelector(listClass);
 
   list.replaceChildren();
 
-  recipes.forEach((recipe) => list.append(createListCard(recipe)));
+  recipes.forEach((recipe) => {
+    const card = createListCard(recipe);
+
+    card.addEventListener('click', () => {
+      openRecipeModalById(recipe.id);
+    });
+    list.append(card);
+  });
 };
 
 export const resetOtherSelects = (expectId) => {

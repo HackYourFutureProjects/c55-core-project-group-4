@@ -8,7 +8,7 @@ import {
   filterMealsByIngredient,
 } from '../services/mealdb.js';
 
-export const initFilters = (id, filterFunction) => {
+export const initFilters = (id, filterFunction, listClass) => {
   const select = document.querySelector(id);
   if (!select) return;
 
@@ -18,23 +18,31 @@ export const initFilters = (id, filterFunction) => {
     resetOtherSelects(id);
 
     if (!value) {
-      renderRecipeList([]);
+      renderRecipeList([], listClass);
       return;
     }
 
     const recipes = await filterFunction(value);
-    renderRecipeList(recipes);
+    renderRecipeList(recipes, listClass);
   });
 };
 
 export const initCategoryFilters = () => {
-  initFilters('#discover-category-select', filterMealsByCategory);
+  initFilters(
+    '#discover-category-select',
+    filterMealsByCategory,
+    '.discover-list'
+  );
 };
 
 export const initCountryFilters = () => {
-  initFilters('#discover-country-select', filterMealsByArea);
+  initFilters('#discover-country-select', filterMealsByArea, '.discover-list');
 };
 
 export const initIngredientFilters = () => {
-  initFilters('#discover-ingredients-select', filterMealsByIngredient);
+  initFilters(
+    '#discover-ingredients-select',
+    filterMealsByIngredient,
+    '.discover-list'
+  );
 };

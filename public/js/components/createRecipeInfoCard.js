@@ -39,6 +39,7 @@ const createImage = (recipe) =>
         className: 'recipe-card-img',
         src: recipe.image,
         alt: recipe.title,
+        width: '120',
       })
     : null;
 
@@ -87,14 +88,18 @@ const createInstructions = (recipe) =>
       })
     : null;
 
-const createVideo = (recipe) =>
-  recipe.youtube
-    ? createElement('video', {
-        className: 'recipe-card-video',
-        src: recipe.youtube,
-        controls: true,
-      })
-    : null;
+const createVideo = (recipe) => {
+  if (!recipe.youtube) return null;
+
+  const videoId = recipe.youtube.split('v=')[1];
+  const embedUrl = `https://www.youtube.com/embed/${videoId}`;
+
+  return createElement('iframe', {
+    className: 'recipe-card-video',
+    src: embedUrl,
+    allowfullscreen: true,
+  });
+};
 
 export const createRecipeInfoCard = (recipe) => {
   const container = createContainer(recipe);

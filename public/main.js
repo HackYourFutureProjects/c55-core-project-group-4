@@ -3,6 +3,7 @@ import {
   initCountryFilters,
   initIngredientFilters,
 } from './js/events/handlerFiltersMealDB.js';
+import { initRandomRecipe } from './js/events/handlerRandomRecipe.js';
 import {
   renderCategoryOptionMealDB,
   renderCountryOptionMealDB,
@@ -17,4 +18,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   initCategoryFilters();
   initCountryFilters();
   initIngredientFilters();
+
+  initRandomRecipe();
 });
