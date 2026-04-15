@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 import express from 'express';
-import db from '../../database/db.js';
+import { prompt } from '../utils/helpers.js';
 
 // Create a new router instance for cohort routes
 const router = express.Router();
@@ -12,50 +12,37 @@ function getOpenAIClient() {
   });
 }
 
-function buildPrompt(dishes) {
-  const dishesList = dishes
-    .map(d => `- ${d.title} (added by ${d.added_by})`)
-    .join('\n');
-
-  return `You are a friendly and enthusiastic recipe assistant! 🍳
-You love helping people discover delicious recipes and cooking ideas. 🥗
-
-Rules:
-- If the user asks about food, recipes, or cooking — answer helpfully and suggest a recipe idea 🎉
-- If the user asks about anything else — return: {"title":"","instructions":"I am here to help with recipe ideas and cooking suggestions only! 🍽️","ingredients":[]}
-- Keep your answers warm, friendly, and fun!
-- You can suggest any recipe based on what the user asks
-
-Always respond in JSON only:
-{"title": string, "instructions": string, "ingredients": [{"ingredient": string, "measure": string}]}
-
-Use metric units.
-
-Our cohort's special dishes — suggest these first when relevant! ⭐
-${dishesList}`;
-}
 
 // POST /api/chat
 router.post('/', async (req, res) => {
   try {
-    const dishes = db.prepare('SELECT * FROM cohort_dishes').all();
-      const openai = getOpenAIClient();
+    const openai = getOpenAIClient();
     // Get the user's message from the request body
     const { userMessage } = req.body;
+    if (!userMessage) {
+  throw new Error('userMessage is required');
+}
 
     const response = await openai.chat.completions.create({
       model: 'openai/gpt-4o-mini',
       messages: [
-        { role: 'system', content: buildPrompt(dishes) },
+        { role: 'system', content: prompt },
         { role: 'user', content: userMessage },
       ],
       temperature: 0.7,
       response_format: { type: 'json_object' },
     });
     //Extract the AI's reply from the response
-   const parsed = JSON.parse(response.choices[0].message.content);
-    res.json({ reply: parsed });
-    } catch (err) {
+    const content = response.choices[0].message.content;
+    // Parse the JSON string into a JavaScript object
+    const parsed = JSON.parse(content);
+    // If parsed response is missing required fields — throw an error
+if (!parsed.title || !parsed.instructions) {
+  throw new Error('Invalid response format from AI');
+}
+     // Send the reply back to the frontend
+res.json({ reply: parsed });
+  } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to get AI response' });
   }
