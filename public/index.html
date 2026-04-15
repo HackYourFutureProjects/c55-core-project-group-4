@@ -29,14 +29,9 @@
     <header>
       <div class="container">
         <a class="header-logo" href="/">
-          <img
-            src="./img/logo.png"
-            alt="Cohort 55 Recipes logo"
-            width="120"
-            height="120"
-          />
+          <img src="./img/logo.png" alt="Cohort 55 Recipes logo" />
         </a>
-        <nav>
+        <nav class="header-nav">
           <ul class="nav-list">
             <li class="nav-list-item">
               <a class="nav-list-link" href="#cohort">C55 Recipes</a>
@@ -49,40 +44,42 @@
             </li>
           </ul>
         </nav>
-        <button class="mode-btn" type="button"></button>
+        <div class="header-buttons-container">
+          <button class="mode-btn" type="button"></button>
+          <button class="header-btn-menu" type="button">
+            <svg class="header-icon-menu" width="28" height="28">
+              <use href="./img/symbol-defs.svg#icon-menu"></use>
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <button class="header-btn-menu" type="button">
-        <svg class="header-icon-menu" width="28" height="28">
-          <use href="./img/symbol-defs.svg#icon-menu"></use>
-        </svg>
-      </button>
-
       <div class="mob-menu">
-        <button class="close-btn-menu" type="button">
-          <svg
-            class="close-icon-menu"
-            width="28"
-            height="28"
-            aria-label="menu close button icon"
-          >
-            <use href="./img/symbol-defs.svg#icon-x-close"></use>
-          </svg>
-        </button>
-        <nav class="mob-menu-nav">
-          <ul class="mob-nav-list">
-            <li class="mob-nav-list-item">
-              <a class="mob-nav-list-link" href="#cohort">C55 Recipes</a>
-            </li>
-            <li class="mob-nav-list-item">
-              <a class="mob-nav-list-link" href="#discover">Discover</a>
-            </li>
-            <li class="mob-nav-list-item">
-              <a class="mob-nav-list-link" href="#favorites">Favorites</a>
-            </li>
-          </ul>
-        </nav>
-        <button class="mob-mode-btn" type="button"></button>
+        <div class="mob-menu-container">
+          <button class="close-btn-menu" type="button">
+            <svg
+              class="close-icon-menu"
+              width="28"
+              height="28"
+              aria-label="menu close button icon"
+            >
+              <use href="./img/symbol-defs.svg#icon-x-close"></use>
+            </svg>
+          </button>
+          <nav class="mob-menu-nav">
+            <ul class="mob-nav-list">
+              <li class="mob-nav-list-item">
+                <a class="mob-nav-list-link" href="#cohort">C55 Recipes</a>
+              </li>
+              <li class="mob-nav-list-item">
+                <a class="mob-nav-list-link" href="#discover">Discover</a>
+              </li>
+              <li class="mob-nav-list-item">
+                <a class="mob-nav-list-link" href="#favorites">Favorites</a>
+              </li>
+            </ul>
+          </nav>
+        </div>
       </div>
     </header>
     <main>
