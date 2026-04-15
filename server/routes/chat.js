@@ -14,7 +14,7 @@ function getOpenAIClient() {
 
 function buildPrompt(dishes) {
   const dishesList = dishes
-    .map(d => `- ${d.title} (added by ${d.added_by})`)
+    .map((d) => `- ${d.title} (added by ${d.added_by})`)
     .join('\n');
 
   return `You are a friendly and enthusiastic recipe assistant! 🍳
@@ -39,7 +39,7 @@ ${dishesList}`;
 router.post('/', async (req, res) => {
   try {
     const dishes = db.prepare('SELECT * FROM cohort_dishes').all();
-      const openai = getOpenAIClient();
+    const openai = getOpenAIClient();
     // Get the user's message from the request body
     const { userMessage } = req.body;
 
@@ -53,9 +53,9 @@ router.post('/', async (req, res) => {
       response_format: { type: 'json_object' },
     });
     //Extract the AI's reply from the response
-   const parsed = JSON.parse(response.choices[0].message.content);
+    const parsed = JSON.parse(response.choices[0].message.content);
     res.json({ reply: parsed });
-    } catch (err) {
+  } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to get AI response' });
   }
