@@ -51,7 +51,7 @@ VALUES
   'Main Course',
   'Iranian',
   'Finely grate onions, salt them and let rest for a few hours. Squeeze out excess moisture. Mix ground lamb with grated onion, salt, and black pepper. Knead well until the mixture is uniform and holds together. Spread onto wide flat skewers (2-4 cm), making small indentations on the surface to distribute heat evenly. Grill over high heat, flipping frequently to avoid uneven cooking. Serve hot with grilled tomatoes, flatbread or steamed rice, fresh herbs, sumac, butter and lime.',
-  'https://upload.wikimedia.org/wikipedia/commons/thumb/4/4d/Kabab_koobideh.jpg/640px-Kabab_koobideh.jpg',
+  'https://www.thespruceeats.com/thmb/t2h_myDhrhO3vYjQ_ySsTu1uVv0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/kabob-koobideh-5224493-hero-01-5361a7c7978c459eb5b9801ebbcc8a22.jpg',
   '[{"ingredient": "ground lamb", "measure": "1kg"}, {"ingredient": "onion", "measure": "180-220g"}, {"ingredient": "salt", "measure": "to taste"}, {"ingredient": "black pepper", "measure": "to taste"}]',
   'Hamed'
 ),
@@ -117,6 +117,15 @@ VALUES
   'https://thewoksoflife.com/wp-content/uploads/2015/03/big-pot-chicken-8.jpg',
   '[{"ingredient": "chicken", "measure": "600g"}, {"ingredient": "potatoes", "measure": "2 pcs"}, {"ingredient": "green bell pepper", "measure": "1 pcs"}, {"ingredient": "red bell pepper", "measure": "1 pcs"}, {"ingredient": "tomatoes", "measure": "2 pcs"}, {"ingredient": "onion", "measure": "1 pcs"}, {"ingredient": "garlic", "measure": "2 cloves"}, {"ingredient": "chili paste", "measure": "2 tbsp"}, {"ingredient": "soy sauce", "measure": "2 tbsp"}, {"ingredient": "sugar", "measure": "1 tbsp"}, {"ingredient": "water", "measure": "200ml"}, {"ingredient": "vegetable oil", "measure": "100ml"}, {"ingredient": "salt and pepper", "measure": "to taste"}]',
   'Yusup'
+),
+(
+  'Persian Meat Patties (Kotlet)',
+  'Main dish',
+  'Iranian',
+  'Peel the boiled potatoes and mash them completely. Add the ground beef to the mashed potatoes. Add the grated onions and the egg. Season with salt, black pepper, and turmeric. Mix everything well and knead until all ingredients are fully combined. Take small portions of the mixture and shape them by hand into flat patties similar to burgers. Fry them in oil until golden and cooked through on both sides. Serve with bread, tomatoes, and pickles.',
+  'https://cookingwithayeh.com/wp-content/uploads/2023/01/Kotlet-Persian-Patties-7.jpg',
+  '[{"ingredient": "ground beef", "measure": "250-300g"}, {"ingredient": "boiled potatoes", "measure": "3 pcs"}, {"ingredient": "onions", "measure": "2 pcs"}, {"ingredient": "egg", "measure": "1 pcs"}, {"ingredient": "turmeric", "measure": "to taste"}, {"ingredient": "salt and black pepper", "measure": "to taste"}]',
+  'Shadi'
 );
 
   
