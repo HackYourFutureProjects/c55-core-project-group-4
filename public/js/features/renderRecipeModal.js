@@ -2,7 +2,6 @@ import { createElement } from '../components/createElement.js';
 import { createRecipeInfoCard } from '../components/createRecipeInfoCard.js';
 import { getMealById } from '../services/mealdb.js';
 import { isRecipeSaved, toggleFavourite } from '../services/favourites.js';
-import { renderFavorites } from './renderFavorites.js';
 
 const modalOverlay = document.querySelector('.modal-overlay');
 const modal = document.querySelector('.modal');
@@ -34,8 +33,8 @@ export const openRecipeModal = (recipe, source = 'mealdb') => {
     toggleFavourite(recipe, source);
     // update button text after toggle
     favBtn.textContent = getFavoriteButtonText(recipe, source);
-    // Re-render favorites section after add/remove
-    renderFavorites();
+    // Notify the app that favorites have changed
+    document.dispatchEvent(new Event('favoritesUpdated'));
   });
 
   container.append(card, favBtn);

@@ -21,8 +21,7 @@ import {
   renderCountryOptionMealDB,
   renderIngredientsOptionMealDB,
 } from './js/features/renderDropdowns.js';
-
-import { renderFavorites } from './js/features/renderFavorites.js';
+import { initFavorites } from './js/features/renderFavorites.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await renderByDishNameCohort();
@@ -33,8 +32,7 @@ document.addEventListener('DOMContentLoaded', async () => {
   await renderCountryOptionMealDB();
   await renderIngredientsOptionMealDB();
 
-  // Render saved favorite recipes from localStorage on page load
-  renderFavorites();
+  initFavorites();
 
   initCohortDishNameFilter();
   initCohortAddedByFilter();

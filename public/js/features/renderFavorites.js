@@ -72,47 +72,42 @@ function updateEmptyState(recipes) {
  * @returns {void}
  */
 export const renderFavorites = (recipes = getSavedRecipes()) => {
-  // Safety check: if the container is missing, stop here
   if (!favoritesList) return;
-
-  // Remove old cards before rendering the new state
+  // Clear old cards before rendering the updated state
   favoritesList.replaceChildren();
-
-  // Show or hide the "empty favorites" message
   updateEmptyState(recipes);
 
-  // Create and render one card per favorite recipe
   recipes.forEach((recipe) => {
-    // Reuse the existing list card component
+    // Reuse the existing card component for favorites
     const card = createListCard(recipe);
 
-    /**
-     * When the user clicks a favorite card:
-     * - fetch the full recipe data
-     * - open the modal with full recipe information
-     */
     card.addEventListener('click', async () => {
-      /**
-       * Fetch full recipe depending on the source
-       *
-       * source === 'mealdb'
-       *   → get recipe from TheMealDB API
-       *
-       * source === 'cohort'
-       *   → get recipe from our backend
-       */
       const fullRecipe =
         recipe.source === 'mealdb'
           ? await getMealById(recipe.id)
           : await fetchCohortRecipeById(recipe.id);
 
-      // Only open the modal if recipe data was fetched successfully
       if (fullRecipe) {
         openRecipeModal(fullRecipe, recipe.source);
       }
     });
 
-    // Add the card to the favorites list in the DOM
     favoritesList.append(card);
   });
 };
+/**
+ * Initialize favorites feature
+ *
+ * This function:
+ * - renders favorites on page load
+ * - listens for favorites updates and re-renders the section
+ *
+ * @returns {void}
+ */
+export function initFavorites() {
+  renderFavorites();
+
+  document.addEventListener('favoritesUpdated', () => {
+    renderFavorites();
+  });
+}
