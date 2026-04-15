@@ -20,7 +20,7 @@ function getFavoriteButtontext(recipe, source) {
 /**
  * Open recipe modal
  */
-export const openRecipeModal = (recipe, source = 'MealDB') => {
+export const openRecipeModal = (recipe, source = 'mealdb') => {
   container.replaceChildren();
   const card = createRecipeInfoCard(recipe);
 
@@ -65,12 +65,12 @@ document.addEventListener('keydown', (e) => {
 });
 
 /**
- * Open modal using MealDB id
+ * Open modal using mealdb id
  */
 export const openRecipeModalById = async (id) => {
   const recipe = await getMealById(id);
 
   if (recipe) {
-    openRecipeModal(recipe, 'MealDB');
+    openRecipeModal(recipe, 'mealdb');
   }
 };
