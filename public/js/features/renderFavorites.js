@@ -22,92 +22,98 @@ import { fetchCohortRecipeById } from '../services/cohort.js';
  * @property {string} image - Recipe image URL
  */
 
-/**
- * Favorites list container in the UI
- * This is where favorite recipe cards will be rendered
- * @type {HTMLElement | null}
- */
-const favoritesList = document.querySelector('.favorites-list');
+let isFavoritesInitialized = false;
 
 /**
- * Empty state message shown when there are no favorite recipes
- * @type {HTMLElement | null}
+ * Get favorites-related DOM elements.
+ *
+ * @returns {{
+ *   favoritesList: HTMLElement | null,
+ *   emptyMessage: HTMLElement | null
+ * }}
  */
-const emptyMessage = document.querySelector('.favorites-empty');
+function getFavoritesElements() {
+  return {
+    favoritesList: document.querySelector('.favorites-list'),
+    emptyMessage: document.querySelector('.favorites-empty'),
+  };
+}
 
 /**
- * Show or hide the empty message depending on favorites length
+ * Show or hide the empty message depending on favorites length.
  *
- * If the favorites array is empty:
- * - show the message
- *
- * If the favorites array has items:
- * - hide the message
- *
- * @param {Array<FavoriteRecipe>} recipes - Favorite recipes to check
+ * @param {HTMLElement | null} emptyMessage
+ * @param {Array<FavoriteRecipe>} recipes
  * @returns {void}
  */
-function updateEmptyState(recipes) {
+function updateEmptyState(emptyMessage, recipes) {
   if (!emptyMessage) return;
-
   emptyMessage.style.display = recipes.length === 0 ? 'block' : 'none';
 }
 
 /**
- * Render favorite recipes in the "Your favorites" section
+ * Render favorite recipes in the "Your favorites" section.
  *
- * This function:
- * 1. gets favorite recipes from localStorage (unless recipes are passed manually)
- * 2. clears the current favorites list
- * 3. updates the empty state message
- * 4. creates a card for each favorite recipe
- * 5. adds click behavior to open the full recipe in the modal
- *
- * Notes:
- * - MealDB favorites only store lightweight data in localStorage,
- *   so we fetch the full recipe by id before opening the modal
- * - Cohort favorites also fetch full recipe data before opening the modal
- *
- * @param {Array<FavoriteRecipe>} [recipes=getSavedRecipes()] - Optional recipes array to render
+ * @param {Array<FavoriteRecipe>} [recipes=getSavedRecipes()]
  * @returns {void}
  */
-export const renderFavorites = (recipes = getSavedRecipes()) => {
+export function renderFavorites(recipes = getSavedRecipes()) {
+  const { favoritesList, emptyMessage } = getFavoritesElements();
   if (!favoritesList) return;
-  // Clear old cards before rendering the updated state
+
   favoritesList.replaceChildren();
-  updateEmptyState(recipes);
+  updateEmptyState(emptyMessage, recipes);
 
   recipes.forEach((recipe) => {
-    // Reuse the existing card component for favorites
     const card = createListCard(recipe);
-
-    card.addEventListener('click', async () => {
-      const fullRecipe =
-        recipe.source === 'mealdb'
-          ? await getMealById(recipe.id)
-          : await fetchCohortRecipeById(recipe.id);
-
-      if (fullRecipe) {
-        openRecipeModal(fullRecipe, recipe.source);
-      }
-    });
-
+    card.dataset.id = recipe.id;
+    card.dataset.source = recipe.source;
     favoritesList.append(card);
   });
-};
+}
+
 /**
- * Initialize favorites feature
- *
- * This function:
- * - renders favorites on page load
- * - listens for favorites updates and re-renders the section
+ * Initialize favorites feature.
  *
  * @returns {void}
  */
 export function initFavorites() {
+  if (isFavoritesInitialized) return;
+  isFavoritesInitialized = true;
+
   renderFavorites();
 
   document.addEventListener('favoritesUpdated', () => {
     renderFavorites();
+  });
+
+  const { favoritesList } = getFavoritesElements();
+
+  favoritesList?.addEventListener('click', async (event) => {
+    const target = event.target;
+    if (!(target instanceof Element)) return;
+
+    const card = target.closest('.recipe-list-card');
+    if (!(card instanceof HTMLElement)) return;
+
+    const { id, source } = card.dataset;
+    if (!id) return;
+    if (source !== 'mealdb' && source !== 'cohort') return;
+
+    try {
+      let fullRecipe = null;
+
+      if (source === 'mealdb') {
+        fullRecipe = await getMealById(id);
+      } else {
+        fullRecipe = await fetchCohortRecipeById(id);
+      }
+
+      if (fullRecipe) {
+        openRecipeModal(fullRecipe, source);
+      }
+    } catch (error) {
+      console.error('Failed to load favorite recipe:', error);
+    }
   });
 }
