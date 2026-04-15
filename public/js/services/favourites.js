@@ -1,3 +1,4 @@
+// @ts-check
 // A fixed key used to store all favorite recipes in localStorage
 const STORAGE_KEY = 'favoriteRecipes';
 
@@ -24,6 +25,9 @@ const STORAGE_KEY = 'favoriteRecipes';
 /**
  * Create a unique key using source + id
  * This prevents conflicts between MealDB and cohort recipes
+ * @param {string|number} id
+ * @param {RecipeSource} source
+ * @returns {string}
  */
 function createFavoriteKey(id, source) {
   return `${source}-${String(id)}`;
@@ -31,6 +35,9 @@ function createFavoriteKey(id, source) {
 
 /**
  * Normalize recipe into a lightweight object for storage
+ * @param {RecipeInput} recipe
+ * @param {RecipeSource} source
+ * @returns {FavoriteRecipe}
  */
 function normalizeFavorite(recipe, source) {
   return {
@@ -44,6 +51,7 @@ function normalizeFavorite(recipe, source) {
 
 /**
  * Read all saved recipes from localStorage
+ * @returns {FavoriteRecipe[]}
  */
 function getSavedRecipes() {
   try {
@@ -61,6 +69,7 @@ function getSavedRecipes() {
 
 /**
  * Save full array back to localStorage
+ * @param {FavoriteRecipe[]} favorites
  */
 function setSavedRecipes(favorites) {
   localStorage.setItem(STORAGE_KEY, JSON.stringify(favorites));
@@ -68,6 +77,9 @@ function setSavedRecipes(favorites) {
 
 /**
  * Check if recipe is already saved
+ * @param {string|number} id
+ * @param {RecipeSource} source
+ * @returns {boolean}
  */
 function isRecipeSaved(id, source) {
   const favorites = getSavedRecipes();
@@ -78,6 +90,9 @@ function isRecipeSaved(id, source) {
 
 /**
  * Save recipe if not already saved
+ * @param {RecipeInput} recipe
+ * @param {RecipeSource} source
+ * @returns {FavoriteRecipe[]}
  */
 function saveRecipe(recipe, source) {
   const favorites = getSavedRecipes();
@@ -95,6 +110,9 @@ function saveRecipe(recipe, source) {
 
 /**
  * Remove recipe using id + source
+ * @param {string|number} id
+ * @param {RecipeSource} source
+ * @returns {FavoriteRecipe[]}
  */
 function removeSavedRecipe(id, source) {
   const favorites = getSavedRecipes();
@@ -108,6 +126,9 @@ function removeSavedRecipe(id, source) {
 
 /**
  * Toggle favorite state
+ * @param {RecipeInput} recipe
+ * @param {RecipeSource} source
+ * @returns {FavoriteRecipe[]}
  */
 function toggleFavourite(recipe, source) {
   if (isRecipeSaved(recipe.id, source)) {

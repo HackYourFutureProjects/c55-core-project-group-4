@@ -1,6 +1,3 @@
-import { createListCard } from '../components/createRecipeListCard.js';
-import { openRecipeModal } from './renderRecipeModal.js';
-
 export const fetchAllCohortRecipes = async () => {
   const res = await fetch('/api/cohort');
   return res.json();
@@ -34,26 +31,28 @@ export const fetchCohortByTitle = async (title) => {
   return res.json();
 };
 
-export const fetchCohortByAddedBy = async (name) => {
+export const fetchCohortByAdded = async (name) => {
   const res = await fetch(`/api/cohort/added_by/${name}`);
   return res.json();
 };
 
-export const renderCohortRecipes = async () => {
-  const list = document.querySelector('.cohort-list');
-  if (!list) return;
+export const getDishNameOptionsCohort = async () => {
+  const recipes = await fetchAllCohortRecipes();
+  // Using Set to remove duplicate values. Set is a built‑in JS structure. That automatically keeps only unique items
+  const options = [...new Set(recipes.map((recipe) => recipe.title).sort())];
+  return options;
+};
 
-  list.replaceChildren();
+export const getAddedByOptionsCohort = async () => {
+  const recipes = await fetchAllCohortRecipes();
+  const options = [...new Set(recipes.map((recipe) => recipe.added_by).sort())];
 
+  return options;
+};
+
+export const getCountryOptionsCohort = async () => {
   const recipes = await fetchAllCohortRecipes();
 
-  recipes.forEach((recipe) => {
-    const card = createListCard(recipe);
-
-    card.addEventListener('click', async () => {
-      const recipeInfo = await fetchCohortRecipeById(recipe.id);
-      openRecipeModal(recipeInfo);
-    });
-    list.append(card);
-  });
+  const options = [...new Set(recipes.map((recipe) => recipe.area).sort())];
+  return options;
 };

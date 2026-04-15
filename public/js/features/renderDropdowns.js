@@ -3,7 +3,7 @@ import { createSelectOption } from '../components/createSelectOption.js';
 
 import { createPlaceholderOption } from './helpers.js';
 
-export async function renderOptionMealDB(getFunction, selectId, filter) {
+export async function renderSelectOptions(getFunction, selectId, filter) {
   const optionsList = await getFunction();
 
   const selectOption = document.querySelector(selectId);
@@ -23,15 +23,15 @@ export async function renderOptionMealDB(getFunction, selectId, filter) {
 }
 
 export async function renderCategoryOptionMealDB() {
-  renderOptionMealDB(getCategories, '#discover-category-select', 'a category');
+  renderSelectOptions(getCategories, '#discover-category-select', 'a category');
 }
 
 export async function renderCountryOptionMealDB() {
-  renderOptionMealDB(getAreas, '#discover-country-select', 'a country');
+  renderSelectOptions(getAreas, '#discover-country-select', 'a country');
 }
 
 export async function renderIngredientsOptionMealDB() {
-  renderOptionMealDB(
+  renderSelectOptions(
     getIngredients,
     '#discover-ingredients-select',
     'an ingredient'
