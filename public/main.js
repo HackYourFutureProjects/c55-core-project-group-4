@@ -8,8 +8,10 @@ import {
   initCountryFilters,
   initIngredientFilters,
 } from './js/events/handlerFiltersMealDB.js';
+import { initMobileMenu } from './js/events/handlerMobileMenu.js';
 import { initRandomRecipe } from './js/events/handlerRandomRecipe.js';
 import { initSearchByDishName } from './js/events/handlerSearchByDishName.js';
+import { initThemeToggle } from './js/events/handlerThemeToggle.js';
 import {
   renderAddedByCohort,
   renderByDishNameCohort,
@@ -31,6 +33,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   await renderCountryOptionMealDB();
   await renderIngredientsOptionMealDB();
 
+  initThemeToggle();
+  initMobileMenu();
   initCohortDishNameFilter();
   initCohortAddedByFilter();
   initCohortCountryFilter();
