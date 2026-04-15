@@ -2,6 +2,7 @@ import { createElement } from '../components/createElement.js';
 import { createRecipeInfoCard } from '../components/createRecipeInfoCard.js';
 import { getMealById } from '../services/mealdb.js';
 import { isRecipeSaved, toggleFavourite } from '../services/favourites.js';
+import { renderFavorites } from './renderFavorites.js';
 
 const modalOverlay = document.querySelector('.modal-overlay');
 const modal = document.querySelector('.modal');
@@ -11,7 +12,7 @@ const container = document.querySelector('.recipe-card-container');
 /**
  * Determine correct button text based on favorite state
  */
-function getFavoriteButtontext(recipe, source) {
+function getFavoriteButtonText(recipe, source) {
   return isRecipeSaved(recipe.id, source)
     ? 'Remove from favorites'
     : 'Add to favorites';
@@ -26,13 +27,15 @@ export const openRecipeModal = (recipe, source = 'mealdb') => {
 
   const favBtn = createElement('button', {
     className: 'recipe-save-btn',
-    text: getFavoriteButtontext(recipe, source),
+    text: getFavoriteButtonText(recipe, source),
   });
 
   favBtn.addEventListener('click', () => {
     toggleFavourite(recipe, source);
     // update button text after toggle
-    favBtn.textContent = getFavoriteButtontext(recipe, source);
+    favBtn.textContent = getFavoriteButtonText(recipe, source);
+    // Re-render favorites section after add/remove
+    renderFavorites();
   });
 
   container.append(card, favBtn);
