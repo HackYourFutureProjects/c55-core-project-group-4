@@ -252,6 +252,80 @@ h2 {
 }
 /* #endregion */
 
+/* #region common styles for inputs and search buttons */
+/* container for input and button */
+.discover-search-form,
+.chat-form {
+  background: var(--color-surface);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 0 auto;
+}
+
+/* labels and inputs */
+.discover-search-form label {
+  font-size: 16px;
+  color: var(--color-text-light);
+  display: block;
+}
+
+.discover-dish-input,
+.chat-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-size: 16px;
+  transition:
+    border-color var(--transition),
+    background var(--transition);
+}
+
+.discover-dish-input:focus,
+.chat-input:focus,
+.discover-dish-input:hover,
+.chat-input:hover,
+.discover-dish-input:active,
+.chat-input:active {
+  border-color: var(--color-primary);
+  outline: none;
+  background: var(--color-surface);
+}
+
+/* search button */
+
+.discover-dish-btn,
+.chat-btn {
+  margin: 0 auto;
+  display: block;
+  padding: 12px 40px;
+  font-size: 16px;
+  font-weight: 600;
+  border: transparent;
+  background: var(--color-primary);
+  color: var(--color-bg);
+  border-radius: 15px;
+
+  transition:
+    background var(--transition),
+    box-shadow var(--transition),
+    transform var(--transition);
+}
+
+.discover-dish-btn:hover,
+.chat-btn:hover {
+  background: var(--color-primary-light);
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+/* #endregion */
+
 /* #region modal-window */
 
 .modal-overlay {
@@ -445,6 +519,7 @@ h2 {
 
 /* #endregion */
 
+/* #region footer */
 footer {
   border-top: 1px solid var(--color-border);
   padding: 30px 0;
@@ -466,6 +541,8 @@ footer {
   color: var(--color-primary-light);
 }
 
+/* #endregion */
+
 @media screen and (min-width: 768px) {
   h2 {
     font-size: 30px;
@@ -486,6 +563,13 @@ footer {
   .discover-list,
   .favorites-list {
     grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* common styles for inputs and search buttons  */
+  .discover-search-form,
+  .chat-form {
+    width: 400px;
+    padding: 30px;
   }
 
   /* #region header*/
@@ -628,7 +712,7 @@ footer {
   /* #endregion */
 }
 
-/* #region Styles for desktop  */
+/* Styles for desktop  */
 @media screen and (min-width: 1168px) {
   .cohort-list,
   .discover-list,
@@ -645,7 +729,7 @@ footer {
     letter-spacing: -0.02em;
   }
 
-  /* #region section hero */
+  /* section hero */
   .hero h1 {
     font-size: 46px;
   }
@@ -664,5 +748,3 @@ footer {
   }
   /* #endregion */
 }
-
-/* #endregion */
