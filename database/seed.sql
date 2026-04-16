@@ -51,7 +51,7 @@ VALUES
   'Main Course',
   'Iranian',
   'Finely grate onions, salt them and let rest for a few hours. Squeeze out excess moisture. Mix ground lamb with grated onion, salt, and black pepper. Knead well until the mixture is uniform and holds together. Spread onto wide flat skewers (2-4 cm), making small indentations on the surface to distribute heat evenly. Grill over high heat, flipping frequently to avoid uneven cooking. Serve hot with grilled tomatoes, flatbread or steamed rice, fresh herbs, sumac, butter and lime.',
-  'https://www.thespruceeats.com/thmb/t2h_myDhrhO3vYjQ_ySsTu1uVv0=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/kabob-koobideh-5224493-hero-01-5361a7c7978c459eb5b9801ebbcc8a22.jpg',
+  'https://static01.nyt.com/images/2024/05/15/multimedia/fs-kabab-koobideh-fvbl/fs-kabab-koobideh-fvbl-videoSixteenByNineJumbo1600.jpg',
   '[{"ingredient": "ground lamb", "measure": "1kg"}, {"ingredient": "onion", "measure": "180-220g"}, {"ingredient": "salt", "measure": "to taste"}, {"ingredient": "black pepper", "measure": "to taste"}]',
   'Hamed'
 ),

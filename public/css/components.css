@@ -161,7 +161,8 @@ header .container {
 .hero,
 .cohort,
 .discover,
-.favorites {
+.favorites,
+.chat {
   padding-top: 20px;
   padding-bottom: 20px;
 }
@@ -908,6 +909,66 @@ footer {
 
   /* #endregion */
 }
+
+/* #region chat */
+.chat {
+  background: linear-gradient(
+    135deg,
+    var(--color-surface) 0%,
+    #2a3d2e 50%,
+    var(--color-surface) 100%
+  );
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  padding: 30px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.chat-description {
+  text-align: center;
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.chat-recipe {
+  background: var(--color-bg);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.chat-recipe h3 {
+  color: var(--color-primary);
+  font-size: 20px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.chat-recipe p {
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.chat-recipe ul {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.chat-recipe li {
+  display: flex;
+  justify-content: space-between;
+  background: var(--color-border);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 15px;
+}
+/* #endregion */
 
 /* Styles for desktop  */
 @media screen and (min-width: 1168px) {
