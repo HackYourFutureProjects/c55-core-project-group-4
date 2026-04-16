@@ -39,7 +39,6 @@ const createImage = (recipe) =>
         className: 'recipe-card-img',
         src: recipe.image,
         alt: recipe.title,
-        width: '120',
       })
     : null;
 
