@@ -42,9 +42,6 @@
             <li class="nav-list-item">
               <a class="nav-list-link" href="#favorites">Favorites</a>
             </li>
-            <li class="nav-list-item">
-              <a class="nav-list-link" href="#chat">Ask AI</a>
-            </li>
           </ul>
         </nav>
         <div class="header-buttons-container">
@@ -79,9 +76,6 @@
               </li>
               <li class="mob-nav-list-item">
                 <a class="mob-nav-list-link" href="#favorites">Favorites</a>
-              </li>
-              <li class="mob-nav-list-item">
-                <a class="mob-nav-list-link" href="#chat">Ask AI</a>
               </li>
             </ul>
           </nav>
@@ -187,23 +181,6 @@
         <p class="favorites-empty">You still don't have a favorite recipe</p>
         <ul class="favorites-list"></ul>
       </section>
-      <section id="chat" class="chat container">
-        <h2>Ask AI for a Recipe 🍳</h2>
-        <p class="chat-description">
-          Not sure what to cook? Just tell me — spicy, quick, comfort food...
-          I'll handle the rest! 🍽️
-        </p>
-        <div class="chat-form">
-          <input
-            id="chat-input"
-            type="text"
-            class="chat-input"
-            placeholder="e.g. something sweet, quick dinner, traditional soup..."
-          />
-          <button id="chat-btn" class="chat-btn" type="button">Ask AI</button>
-        </div>
-        <div id="chat-result" class="chat-result"></div>
-      </section>
     </main>
     <footer>
       <div class="container">
@@ -234,7 +211,30 @@
         <div class="recipe-card-container"></div>
       </div>
     </div>
+    <!-- Floating chat button -->
+    <button class="chat-bubble-btn" type="button">💬</button>
 
+    <!-- Chat popup window -->
+    <div class="chat-popup" id="chat-popup">
+      <div class="chat-popup-header">
+        <h3>Ask AI for a Recipe 🍳</h3>
+        <button class="chat-popup-close" type="button">✕</button>
+      </div>
+      <p class="chat-description">
+        Not sure what to cook? Just tell me — spicy, quick, comfort food... I'll
+        handle the rest! 🍽️
+      </p>
+      <div class="chat-form">
+        <input
+          id="chat-input"
+          type="text"
+          class="chat-input"
+          placeholder="e.g. something sweet, quick dinner, traditional soup..."
+        />
+        <button id="chat-btn" class="chat-btn" type="button">Ask AI</button>
+      </div>
+      <div id="chat-result" class="chat-result"></div>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
