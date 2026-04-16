@@ -17,7 +17,7 @@ export const renderAddedByCohort = async () => {
   renderSelectOptions(
     getAddedByOptionsCohort,
     '#cohort-added-select',
-    'by who added'
+    'an author'
   );
 };
 
