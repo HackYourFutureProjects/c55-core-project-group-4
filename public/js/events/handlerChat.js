@@ -19,7 +19,7 @@ export const initChat = () => {
       const recipe = await fetchChatReply(userMessage);
       renderChatResult(recipe);
     } catch (err) {
-      result.innerHTML = '<p>Something went wrong. Try again!</p>';
+      result.innerHTML = '<p>I am here to help with recipe ideas only! 🍽️</p>';
       console.error(err);
     } finally {
       btn.disabled = false;
