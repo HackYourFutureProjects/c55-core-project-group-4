@@ -25,6 +25,7 @@ import {
 } from './js/features/renderDropdowns.js';
 import { initFavorites } from './js/features/renderFavorites.js';
 import { initRecipeModal } from './js/features/renderRecipeModal.js';
+import { initChat } from './js/events/handlerChat.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
   await renderByDishNameCohort();
@@ -51,4 +52,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   initRandomRecipe();
 
   initSearchByDishName();
+
+  initChat();
 });
