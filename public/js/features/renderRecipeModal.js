@@ -1,38 +1,82 @@
+// @ts-check
+
 import { createElement } from '../components/createElement.js';
 import { createRecipeInfoCard } from '../components/createRecipeInfoCard.js';
 import { getMealById } from '../services/mealdb.js';
 import { isRecipeSaved, toggleFavourite } from '../services/favourites.js';
 
-const modalOverlay = document.querySelector('.modal-overlay');
-const modal = document.querySelector('.modal');
-const closeModalBtn = document.querySelector('.close-btn');
-const container = document.querySelector('.recipe-card-container');
+let isRecipeModalInitialized = false;
 
 /**
- * Determine correct button text based on favorite state
+ * @typedef {'mealdb' | 'cohort'} RecipeSource
  */
-function getFavoriteButtontext(recipe, source) {
+
+/**
+ * Minimum recipe shape required by the modal and favorites logic.
+ *
+ * @typedef {Object} RecipeInput
+ * @property {string} id
+ * @property {string} title
+ * @property {string} image
+ */
+
+/**
+ * Get modal-related DOM elements.
+ *
+ * @returns {{
+ *   modalOverlay: HTMLElement | null,
+ *   modal: HTMLElement | null,
+ *   closeModalBtn: HTMLElement | null,
+ *   container: HTMLElement | null
+ * }}
+ */
+function getModalElements() {
+  return {
+    modalOverlay: document.querySelector('.modal-overlay'),
+    modal: document.querySelector('.modal'),
+    closeModalBtn: document.querySelector('.close-btn'),
+    container: document.querySelector('.recipe-card-container'),
+  };
+}
+
+/**
+ * Determine correct button text based on favorite state.
+ *
+ * @param {RecipeInput} recipe
+ * @param {RecipeSource} source
+ * @returns {string}
+ */
+function getFavoriteButtonText(recipe, source) {
   return isRecipeSaved(recipe.id, source)
     ? 'Remove from favorites'
     : 'Add to favorites';
 }
 
 /**
- * Open recipe modal
+ * Open recipe modal.
+ *
+ * @param {RecipeInput} recipe
+ * @param {RecipeSource} [source='mealdb']
+ * @returns {void}
  */
-export const openRecipeModal = (recipe, source = 'MealDB') => {
+export function openRecipeModal(recipe, source = 'mealdb') {
+  const { modalOverlay, modal, container } = getModalElements();
+
+  if (!modalOverlay || !modal || !container) return;
+
   container.replaceChildren();
+
   const card = createRecipeInfoCard(recipe);
 
   const favBtn = createElement('button', {
     className: 'recipe-save-btn',
-    text: getFavoriteButtontext(recipe, source),
+    text: getFavoriteButtonText(recipe, source),
   });
 
   favBtn.addEventListener('click', () => {
     toggleFavourite(recipe, source);
-    // update button text after toggle
-    favBtn.textContent = getFavoriteButtontext(recipe, source);
+    favBtn.textContent = getFavoriteButtonText(recipe, source);
+    document.dispatchEvent(new Event('favoritesUpdated'));
   });
 
   container.append(card, favBtn);
@@ -40,37 +84,61 @@ export const openRecipeModal = (recipe, source = 'MealDB') => {
   modal.scrollTop = 0;
   modalOverlay.classList.add('is-open');
   document.body.classList.add('no-scroll');
-};
+}
 
 /**
- * Close modal
+ * Close recipe modal.
+ *
+ * @returns {void}
  */
-export const closeRecipeModal = () => {
+export function closeRecipeModal() {
+  const { modalOverlay } = getModalElements();
+  if (!modalOverlay) return;
+
   modalOverlay.classList.remove('is-open');
   document.body.classList.remove('no-scroll');
-};
-
-closeModalBtn.addEventListener('click', closeRecipeModal);
-
-modalOverlay.addEventListener('click', (e) => {
-  if (e.target === modalOverlay) {
-    closeRecipeModal();
-  }
-});
-
-document.addEventListener('keydown', (e) => {
-  if (e.key === 'Escape') {
-    closeRecipeModal();
-  }
-});
+}
 
 /**
- * Open modal using MealDB id
+ * Open modal using MealDB id.
+ *
+ * @param {string} id
+ * @returns {Promise<void>}
  */
-export const openRecipeModalById = async (id) => {
-  const recipe = await getMealById(id);
+export async function openRecipeModalById(id) {
+  try {
+    const recipe = /** @type {RecipeInput | null} */ (await getMealById(id));
 
-  if (recipe) {
-    openRecipeModal(recipe, 'MealDB');
+    if (recipe) {
+      openRecipeModal(recipe, 'mealdb');
+    }
+  } catch (error) {
+    console.error('Failed to open recipe modal by id:', error);
   }
-};
+}
+
+/**
+ * Initialize recipe modal behavior.
+ *
+ * @returns {void}
+ */
+export function initRecipeModal() {
+  if (isRecipeModalInitialized) return;
+  isRecipeModalInitialized = true;
+
+  const { modalOverlay, closeModalBtn } = getModalElements();
+
+  closeModalBtn?.addEventListener('click', closeRecipeModal);
+
+  modalOverlay?.addEventListener('click', (event) => {
+    if (event.target === modalOverlay) {
+      closeRecipeModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeRecipeModal();
+    }
+  });
+}

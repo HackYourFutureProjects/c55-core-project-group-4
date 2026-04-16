@@ -1,5 +1,13 @@
+//@ts-check
 //Base URL for TheMealDB API
 const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
+
+/**
+ * @typedef {Record<string, any>} MealData
+ * @typedef {{strCategory: string}} CategoryItem
+ * @typedef {{strArea: string}} AreaItem
+ * @typedef {{strIngredient: string}} IngredientItem
+ */
 
 //**** GENERIC FETCH FUNCTION ****
 /**
@@ -20,8 +28,9 @@ async function fetchJson(url) {
 /**
  * Extract ingredients and measurements from a TheMealDB meal object.
  * TheMealDB stores them as strIngredient1..20 and strMeasure1..20.
- * @param {object} meal
+ * @param {MealData} meal
  * @returns {Array<{ingredient: string, measure: string}>}
+ *
  */
 function extractIngredients(meal) {
   const ingredients = [];
@@ -41,7 +50,7 @@ function extractIngredients(meal) {
 }
 /**
  * Normalize full meal data (search, random, lookup)
- * @param {object} meal
+ * @param {MealData} meal
  * @returns {{
  *   id: string,
  *   title: string,
@@ -62,14 +71,18 @@ function normalizeMeal(meal) {
     area: meal.strArea || '',
     image: meal.strMealThumb || '',
     instructions: meal.strInstructions || '',
-    tags: meal.strTags ? meal.strTags.split(',').map((tag) => tag.trim()) : [],
+    tags: /** @type {string} */ (meal.strTags)
+      ? /** @type {string} */ (meal.strTags)
+          .split(',')
+          .map((/** @type {string} */ tag) => tag.trim())
+      : [],
     youtube: meal.strYoutube || '',
     ingredients: extractIngredients(meal),
   };
 }
 /**
  * Normalize short meal data (filter results)
- * @param {object} meal
+ * @param {MealData} meal
  * @returns {{
  *   id: string,
  *   title: string,
@@ -113,7 +126,9 @@ async function getRandomMeal() {
  */
 async function getCategories() {
   const data = await fetchJson(`${BASE_URL}/list.php?c=list`);
-  return (data.meals || []).map((item) => item.strCategory);
+  return (data.meals || []).map(
+    (/** @type {CategoryItem} */ item) => item.strCategory
+  );
 }
 
 /**
@@ -122,7 +137,7 @@ async function getCategories() {
  */
 async function getAreas() {
   const data = await fetchJson(`${BASE_URL}/list.php?a=list`);
-  return (data.meals || []).map((item) => item.strArea);
+  return (data.meals || []).map((/** @type {AreaItem} */ item) => item.strArea);
 }
 
 /**
@@ -131,7 +146,9 @@ async function getAreas() {
  */
 async function getIngredients() {
   const data = await fetchJson(`${BASE_URL}/list.php?i=list`);
-  return (data.meals || []).map((item) => item.strIngredient);
+  return (data.meals || []).map(
+    (/** @type {IngredientItem} */ item) => item.strIngredient
+  );
 }
 
 /**
