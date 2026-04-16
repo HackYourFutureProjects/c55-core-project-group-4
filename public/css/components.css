@@ -445,6 +445,27 @@ h2 {
 
 /* #endregion */
 
+footer {
+  border-top: 1px solid var(--color-border);
+  padding: 30px 0;
+  font-size: 16px;
+}
+
+.footer-text {
+  color: var(--color-text-light);
+  margin: 0;
+  margin-bottom: 10px;
+}
+.footer-address {
+  color: var(--color-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+.footer-address:hover {
+  color: var(--color-primary-light);
+}
+
 @media screen and (min-width: 768px) {
   h2 {
     font-size: 30px;
