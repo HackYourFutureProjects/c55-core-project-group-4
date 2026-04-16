@@ -1,6 +1,6 @@
 import OpenAI from 'openai';
 import express from 'express';
-import { prompt } from '../utils/helpers.js';
+import { prompt } from '../utils/prompt.js';
 
 // Create a new router instance for cohort routes
 const router = express.Router();
