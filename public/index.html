@@ -42,9 +42,6 @@
             <li class="nav-list-item">
               <a class="nav-list-link" href="#favorites">Favorites</a>
             </li>
-            <li class="nav-list-item">
-              <a class="nav-list-link" href="#chat">Ask AI</a>
-            </li>
           </ul>
         </nav>
         <div class="header-buttons-container">
@@ -79,9 +76,6 @@
               </li>
               <li class="mob-nav-list-item">
                 <a class="mob-nav-list-link" href="#favorites">Favorites</a>
-              </li>
-              <li class="mob-nav-list-item">
-                <a class="mob-nav-list-link" href="#chat">Ask AI</a>
               </li>
             </ul>
           </nav>
@@ -193,23 +187,6 @@
         <p class="favorites-empty">You still don't have a favorite recipe</p>
         <ul class="favorites-list"></ul>
       </section>
-      <section id="chat" class="chat container">
-        <h2>Ask AI for a Recipe 🍳</h2>
-        <p class="chat-description">
-          Not sure what to cook? Just tell me — spicy, quick, comfort food...
-          I'll handle the rest! 🍽️
-        </p>
-        <div class="chat-form">
-          <input
-            id="chat-input"
-            type="text"
-            class="chat-input"
-            placeholder="e.g. something sweet, quick dinner, traditional soup..."
-          />
-          <button id="chat-btn" class="chat-btn" type="button">Ask AI</button>
-        </div>
-        <div id="chat-result" class="chat-result"></div>
-      </section>
     </main>
     <footer>
       <div class="container">
@@ -240,7 +217,34 @@
         <div class="recipe-card-container"></div>
       </div>
     </div>
+    <!-- Floating chat button -->
+    <button class="chat-bubble-btn" type="button">
+  <svg width="50px" height="50px" viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg" fill="currentColor">
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M8.48 4h4l.5.5v2.03h.52l.5.5V8l-.5.5h-.52v3l-.5.5H9.36l-2.5 2.76L6 14.4V12H3.5l-.5-.64V8.5h-.5L2 8v-.97l.5-.5H3V4.36L3.53 4h4V2.86A1 1 0 0 1 7 2a1 1 0 0 1 2 0 1 1 0 0 1-.52.83V4zM12 8V5H4v5.86l2.5.14H7v2.19l1.8-2.04.35-.15H12V8zm-2.12.51a2.71 2.71 0 0 1-1.37.74v-.01a2.71 2.71 0 0 1-2.42-.74l-.7.71c.34.34.745.608 1.19.79.45.188.932.286 1.42.29a3.7 3.7 0 0 0 2.58-1.07l-.7-.71zM6.49 6.5h-1v1h1v-1zm3 0h1v1h-1v-1z"/>
+  </svg>
+</button>
 
+    <!-- Chat popup window -->
+    <div class="chat-popup" id="chat-popup">
+      <div class="chat-popup-header">
+        <h3>Ask AI for a Recipe 🍳</h3>
+        <button class="chat-popup-close" type="button">✕</button>
+      </div>
+      <p class="chat-description">
+        Not sure what to cook? Just tell me — spicy, quick, comfort food... I'll
+        handle the rest! 🍽️
+      </p>
+      <div class="chat-form">
+        <input
+          id="chat-input"
+          type="text"
+          class="chat-input"
+          placeholder="e.g. something sweet, quick dinner, traditional soup..."
+        />
+        <button id="chat-btn" class="chat-btn" type="button">Ask AI</button>
+      </div>
+      <div id="chat-result" class="chat-result"></div>
+    </div>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
