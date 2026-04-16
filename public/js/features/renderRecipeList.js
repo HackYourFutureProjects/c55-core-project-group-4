@@ -3,7 +3,7 @@ import { fetchCohortRecipeById } from '../services/cohort.js';
 import { getMealById } from '../services/mealdb.js';
 import { openRecipeModal } from './renderRecipeModal.js';
 
-export const renderRecipeList = (recipes, listClass, source = 'MealDB') => {
+export const renderRecipeList = (recipes, listClass, source = 'mealdb') => {
   const list = document.querySelector(listClass);
   if (!list) return;
 
@@ -14,7 +14,7 @@ export const renderRecipeList = (recipes, listClass, source = 'MealDB') => {
 
     card.addEventListener('click', async () => {
       const recipeInfo =
-        source === 'MealDB'
+        source === 'mealdb'
           ? await getMealById(recipe.id)
           : await fetchCohortRecipeById(recipe.id);
       openRecipeModal(recipeInfo, source);
