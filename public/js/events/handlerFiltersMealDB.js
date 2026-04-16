@@ -3,6 +3,7 @@ import {
   resetOtherSelects,
   selectsMealDBArray,
 } from '../features/renderRecipeList.js';
+import { fetchAllCohortRecipes } from '../services/cohort.js';
 import {
   filterMealsByArea,
   filterMealsByCategory,
@@ -25,7 +26,10 @@ export const initFilters = (
     resetOtherSelects(id, selectsArray);
 
     if (!value) {
-      renderRecipeList([], listClass, source);
+      const allRecipes =
+        source === 'cohort' ? await fetchAllCohortRecipes() : [];
+
+      renderRecipeList(allRecipes, listClass, source);
       return;
     }
 

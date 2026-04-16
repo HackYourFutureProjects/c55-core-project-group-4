@@ -130,44 +130,50 @@
       </section>
       <section id="discover" class="discover container">
         <h2>Discover more recipes</h2>
-        <form class="discover-search-form">
-          <label for="discover-dish-input">Search by dish name:</label>
-          <input
-            id="discover-dish-input"
-            type="text"
-            class="discover-dish-input"
-            required
-            minlength="2"
-            maxlength="15"
-            placeholder="Enter dish name..."
-          />
-          <button type="submit" class="discover-dish-btn">Search</button>
-        </form>
-        <div>
-          <h3>Filter by</h3>
-          <div>
-            <label for="discover-category-select">Category</label>
-            <select
-              id="discover-category-select"
-              class="discover-category-select"
-            ></select>
-          </div>
-          <div>
-            <label for="discover-country-select" class="discover-country-select"
-              >Country</label
-            >
-            <select id="discover-country-select"></select>
-          </div>
-          <div>
-            <label for="discover-ingredients-select">Ingredients</label>
-            <select
-              id="discover-ingredients-select"
-              class="discover-ingredients-select"
-            ></select>
+        <div class="discover-search-container">
+          <form class="discover-search-form">
+            <label for="discover-dish-input">Search by dish name:</label>
+            <input
+              id="discover-dish-input"
+              type="text"
+              class="discover-dish-input"
+              required
+              minlength="2"
+              maxlength="15"
+              placeholder="Enter dish name..."
+            />
+            <button type="submit" class="discover-dish-btn">Search</button>
+          </form>
+          <div class="discover-filters-block">
+            <h3 class="discover-filters">Filter by</h3>
+            <div class="discover-selectors-wrap">
+              <div>
+                <label for="discover-category-select">Category</label>
+                <select
+                  id="discover-category-select"
+                  class="discover-category-select"
+                ></select>
+              </div>
+              <div>
+                <label
+                  for="discover-country-select"
+                  class="discover-country-select"
+                  >Country</label
+                >
+                <select id="discover-country-select"></select>
+              </div>
+              <div>
+                <label for="discover-ingredients-select">Ingredients</label>
+                <select
+                  id="discover-ingredients-select"
+                  class="discover-ingredients-select"
+                ></select>
+              </div>
+            </div>
           </div>
         </div>
         <ul class="discover-list"></ul>
-        <div>
+        <div class="discover-random wrap">
           <p class="discover-random-text">
             Not sure what to cook today? Try your luck!
           </p>
