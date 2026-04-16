@@ -365,7 +365,8 @@ select:focus {
 }
 
 .discover-dish-btn,
-.discover-random-btn {
+.discover-random-btn,
+.chat-btn {
   margin: 0 auto;
   display: block;
   padding: 12px 40px;
@@ -382,7 +383,8 @@ select:focus {
 }
 
 .discover-dish-btn:hover,
-.discover-random-btn:hover {
+.discover-random-btn:hover,
+.chat-btn:hover {
   background: var(--color-primary-light);
   transform: scale(1.1);
 }
@@ -688,6 +690,97 @@ footer {
 
 /* #endregion */
 
+/* #region chat */
+.chat {
+  background: linear-gradient(
+    135deg,
+    var(--color-surface) 0%,
+    #2a3d2e 50%,
+    var(--color-surface) 100%
+  );
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  padding: 30px 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.chat-description {
+  text-align: center;
+  color: var(--color-text-light);
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.chat-recipe {
+  background: var(--color-bg);
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  padding: 20px;
+  margin-top: 20px;
+}
+
+.chat-recipe h3 {
+  color: var(--color-primary);
+  font-size: 20px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.chat-recipe p {
+  color: var(--color-text);
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.chat-recipe ul {
+  display: grid;
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.chat-recipe li {
+  display: flex;
+  justify-content: space-between;
+  background: var(--color-border);
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.chat-form {
+  width: 100%;
+  background: var(--color-surface);
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid var(--color-border);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.chat-input {
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  background: var(--color-bg);
+  color: var(--color-text);
+  transition:
+    border-color var(--transition),
+    background var(--transition);
+}
+
+.chat-input:focus,
+.chat-input:hover,
+.chat-input:active {
+  border-color: var(--color-primary);
+  background: var(--color-surface);
+}
+/* #endregion */
+
 @media screen and (min-width: 768px) {
   h2 {
     font-size: 30px;
@@ -835,6 +928,13 @@ footer {
   }
   /* #endregion */
 
+  /* #region chart section */
+  .chat-form {
+    width: 400px;
+    padding: 30px;
+  }
+  /* endregion */
+
   /* #region modal-window */
 
   .modal {
@@ -909,66 +1009,6 @@ footer {
 
   /* #endregion */
 }
-
-/* #region chat */
-.chat {
-  background: linear-gradient(
-    135deg,
-    var(--color-surface) 0%,
-    #2a3d2e 50%,
-    var(--color-surface) 100%
-  );
-  border-radius: 16px;
-  border: 1px solid var(--color-border);
-  padding: 30px 20px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
-.chat-description {
-  text-align: center;
-  color: var(--color-text-light);
-  margin-bottom: 20px;
-  font-size: 16px;
-}
-
-.chat-recipe {
-  background: var(--color-bg);
-  border-radius: 12px;
-  border: 1px solid var(--color-border);
-  padding: 20px;
-  margin-top: 20px;
-}
-
-.chat-recipe h3 {
-  color: var(--color-primary);
-  font-size: 20px;
-  margin-bottom: 12px;
-  text-align: center;
-}
-
-.chat-recipe p {
-  color: var(--color-text);
-  line-height: 1.6;
-  margin-bottom: 16px;
-}
-
-.chat-recipe ul {
-  display: grid;
-  gap: 8px;
-  padding: 0;
-  list-style: none;
-}
-
-.chat-recipe li {
-  display: flex;
-  justify-content: space-between;
-  background: var(--color-border);
-  padding: 6px 10px;
-  border-radius: 6px;
-  font-size: 15px;
-}
-/* #endregion */
 
 /* Styles for desktop  */
 @media screen and (min-width: 1168px) {
