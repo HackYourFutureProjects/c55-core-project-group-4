@@ -13,7 +13,10 @@ export async function fetchChatReply(userMessage) {
   // so we use .catch(() => ({})) to avoid a parse error
   if (!response.ok) {
     const data = await response.json().catch(() => ({}));
-    throw new Error(data.error || 'Server error');
+    throw {
+      status: response.status,
+      message: data.error || 'Server error',
+    };
   }
 
   // Only parse JSON if the response is successful

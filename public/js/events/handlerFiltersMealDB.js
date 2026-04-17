@@ -1,3 +1,4 @@
+import { getErrorMessage } from '../features/helpers.js';
 import {
   renderRecipeList,
   resetOtherSelects,
@@ -24,17 +25,24 @@ export const initFilters = (
     const value = select.value;
 
     resetOtherSelects(id, selectsArray);
+    try {
+      if (!value) {
+        const allRecipes =
+          source === 'cohort' ? await fetchAllCohortRecipes() : [];
 
-    if (!value) {
-      const allRecipes =
-        source === 'cohort' ? await fetchAllCohortRecipes() : [];
+        renderRecipeList(allRecipes, listClass, source);
+        return;
+      }
 
-      renderRecipeList(allRecipes, listClass, source);
-      return;
+      const recipes = await filterFunction(value);
+      renderRecipeList(recipes, listClass, source);
+    } catch (error) {
+      if (source === 'cohort') {
+        getErrorMessage(error);
+      } else {
+        console.error(error);
+      }
     }
-
-    const recipes = await filterFunction(value);
-    renderRecipeList(recipes, listClass, source);
   });
 };
 

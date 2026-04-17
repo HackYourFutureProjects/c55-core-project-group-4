@@ -1,11 +1,22 @@
+const handleResponse = async (res) => {
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw {
+      status: res.status,
+      message: data.error || 'Server error',
+    };
+  }
+  return res.json();
+};
+
 export const fetchAllCohortRecipes = async () => {
   const res = await fetch('/api/cohort');
-  return res.json();
+  return handleResponse(res);
 };
 
 export const fetchCohortRecipeById = async (id) => {
   const res = await fetch(`/api/cohort/${id}`);
-  const raw = await res.json();
+  const raw = await handleResponse(res);
 
   const ingredients = (() => {
     try {
@@ -23,17 +34,17 @@ export const fetchCohortRecipeById = async (id) => {
 
 export const fetchCohortByArea = async (area) => {
   const res = await fetch(`/api/cohort/area/${area}`);
-  return res.json();
+  return handleResponse(res);
 };
 
 export const fetchCohortByTitle = async (title) => {
   const res = await fetch(`/api/cohort/title/${title}`);
-  return res.json();
+  return handleResponse(res);
 };
 
 export const fetchCohortByAdded = async (name) => {
   const res = await fetch(`/api/cohort/added_by/${name}`);
-  return res.json();
+  return handleResponse(res);
 };
 
 export const getDishNameOptionsCohort = async () => {
