@@ -126,6 +126,15 @@ VALUES
   'https://cookingwithayeh.com/wp-content/uploads/2023/01/Kotlet-Persian-Patties-7.jpg',
   '[{"ingredient": "ground beef", "measure": "250-300g"}, {"ingredient": "boiled potatoes", "measure": "3 pcs"}, {"ingredient": "onions", "measure": "2 pcs"}, {"ingredient": "egg", "measure": "1 pcs"}, {"ingredient": "turmeric", "measure": "to taste"}, {"ingredient": "salt and black pepper", "measure": "to taste"}]',
   'Shadi'
+),
+(
+  'Bint Al-Sahn',
+  'Dessert',
+  'Yemeni',
+  'In a bowl, mix flour, eggs, and salt, then gradually add water until a soft dough forms. Knead well for about 15 minutes until smooth. Cover and let it rest for 30–60 minutes. Divide the dough into small balls. Roll each ball into very thin layers, almost transparent. Place the first layer in a greased baking tray, brush with ghee, then add another layer and repeat until all layers are stacked. Brush the top with ghee and sprinkle black seeds. Bake in a preheated oven at 200°C until golden brown. Remove from oven and immediately pour honey over it. Serve hot.',
+  'https://app.ckbk.com/images/v5/eyJrZXkiOiJpbWFnZXMvaXNsYTM4MjA4YzE4czAwMXIwMDFnMDEuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxMDAwLCJoZWlnaHQiOjEwMDAsImZpdCI6Imluc2lkZSJ9fX0=?signature=143a0d7890e77d56fad79f0360daf57691cdfa492b91386ad9954b51ecc86734',
+  '[{"ingredient": "all-purpose flour", "measure": "3 cups"}, {"ingredient": "eggs", "measure": "4 pcs"}, {"ingredient": "water", "measure": "1 cup"}, {"ingredient": "ghee", "measure": "0.5 cup"}, {"ingredient": "honey", "measure": "0.5 cup"}, {"ingredient": "black seeds (Nigella seeds)", "measure": "1 tbsp"}, {"ingredient": "salt", "measure": "0.5 tsp"}]',
+  'Marah'
 );
 
   

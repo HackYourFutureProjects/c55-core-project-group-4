@@ -1,15 +1,22 @@
+import { createElement } from "./createElement";
+
+
 export const createChatCard = (recipe) => {
-  const ingredientsList = recipe.ingredients
-    .map((i) => `<li>${i.ingredient} — ${i.measure}</li>`)
-    .join('');
+  const card = createElement('div', {class: 'chat-recipe'});
 
-  const card = document.createElement('div');
-  card.className = 'chat-recipe';
-  card.innerHTML = `
-    <h3>${recipe.title}</h3>
-    <p>${recipe.instructions}</p>
-    <ul>${ingredientsList}</ul>
-  `;
+  const title = createElement('h3',{text: recipe.title});
+  
 
+  const instructions = createElement('p', {text: recipe.instructions});
+  
+
+
+  const ul = createElement('ul');
+  recipe.ingredients.forEach(({ ingredient, measure }) => {
+  const li = createElement('li', {text: `${ingredient} — ${measure}`})
+    ul.append(li);
+  });
+
+  card.append(title, instructions, ul);
   return card;
 };
