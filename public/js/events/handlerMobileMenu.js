@@ -4,6 +4,8 @@ export const initMobileMenu = () => {
   const openMenuBtn = document.querySelector('.header-btn-menu');
   const linkMobMenu = document.querySelectorAll('.mob-nav-list-item');
 
+  if (!mobMenu || !closeMenuBtn || !openMenuBtn) return;
+
   const openMobMenu = () => {
     mobMenu.classList.add('is-open-menu');
     document.body.classList.add('no-scroll');

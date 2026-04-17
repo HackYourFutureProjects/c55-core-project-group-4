@@ -3,14 +3,19 @@ import { createSelectOption } from '../components/createSelectOption.js';
 
 import { createPlaceholderOption } from './helpers.js';
 
-export async function renderSelectOptions(getFunction, selectId, filter) {
+export async function renderSelectOptions(
+  getFunction,
+  selectId,
+  placeholderLabel
+) {
   const optionsList = await getFunction();
 
   const selectOption = document.querySelector(selectId);
-
   if (!selectOption) return;
 
-  const placeholder = createPlaceholderOption(`Select ${filter}`);
+  selectOption.replaceChildren();
+
+  const placeholder = createPlaceholderOption(`Select ${placeholderLabel}`);
 
   selectOption.appendChild(placeholder);
 
@@ -23,15 +28,19 @@ export async function renderSelectOptions(getFunction, selectId, filter) {
 }
 
 export async function renderCategoryOptionMealDB() {
-  renderSelectOptions(getCategories, '#discover-category-select', 'a category');
+  await renderSelectOptions(
+    getCategories,
+    '#discover-category-select',
+    'a category'
+  );
 }
 
 export async function renderCountryOptionMealDB() {
-  renderSelectOptions(getAreas, '#discover-country-select', 'a country');
+  await renderSelectOptions(getAreas, '#discover-country-select', 'a country');
 }
 
 export async function renderIngredientsOptionMealDB() {
-  renderSelectOptions(
+  await renderSelectOptions(
     getIngredients,
     '#discover-ingredients-select',
     'an ingredient'

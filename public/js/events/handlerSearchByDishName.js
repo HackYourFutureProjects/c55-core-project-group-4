@@ -1,4 +1,8 @@
-import { getErrorMessage, renderNoResults } from '../features/helpers.js';
+import {
+  getErrorMessage,
+  handleMealDBClick,
+  renderNoResults,
+} from '../features/helpers.js';
 import { renderRecipeList } from '../features/renderRecipeList.js';
 import { openRecipeModal } from '../features/renderRecipeModal.js';
 import { searchMealsByName } from '../services/mealdb.js';
@@ -27,7 +31,7 @@ export const initSearchByDishName = () => {
         return;
       }
 
-      renderRecipeList(recipes, '.discover-list');
+      renderRecipeList(recipes, '.discover-list', handleMealDBClick);
 
       if (recipes.length === 1) {
         openRecipeModal(recipes[0]);

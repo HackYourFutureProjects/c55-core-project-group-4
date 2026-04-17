@@ -28,13 +28,15 @@ import { initRecipeModal } from './js/features/renderRecipeModal.js';
 import { initChat } from './js/events/handlerChat.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
-  await renderByDishNameCohort();
-  await renderAddedByCohort();
-  await renderCountryCohort();
-  await renderCohortRecipes();
-  await renderCategoryOptionMealDB();
-  await renderCountryOptionMealDB();
-  await renderIngredientsOptionMealDB();
+  await Promise.all([
+    renderByDishNameCohort(),
+    renderAddedByCohort(),
+    renderCountryCohort(),
+    renderCohortRecipes(),
+    renderCategoryOptionMealDB(),
+    renderCountryOptionMealDB(),
+    renderIngredientsOptionMealDB(),
+  ]);
 
   initThemeToggle();
   initMobileMenu();
