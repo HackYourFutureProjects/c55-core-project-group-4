@@ -37,11 +37,7 @@ export const initFilters = (
       const recipes = await filterFunction(value);
       renderRecipeList(recipes, listClass, source);
     } catch (error) {
-      if (source === 'cohort') {
-        getErrorMessage(error);
-      } else {
-        console.error(error);
-      }
+      getErrorMessage(error);
     }
   });
 };

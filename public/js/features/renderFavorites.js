@@ -5,6 +5,7 @@ import { openRecipeModal } from './renderRecipeModal.js';
 import { getSavedRecipes } from '../services/favourites.js';
 import { getMealById } from '../services/mealdb.js';
 import { fetchCohortRecipeById } from '../services/cohort.js';
+import { getErrorMessage } from './helpers.js';
 
 /**
  * @typedef {'mealdb' | 'cohort'} RecipeSource
@@ -113,6 +114,7 @@ export function initFavorites() {
         openRecipeModal(fullRecipe, source);
       }
     } catch (error) {
+      getErrorMessage(error);
       console.error('Failed to load favorite recipe:', error);
     }
   });

@@ -1,4 +1,4 @@
-import { renderNoResults } from '../features/helpers.js';
+import { getErrorMessage, renderNoResults } from '../features/helpers.js';
 import { renderRecipeList } from '../features/renderRecipeList.js';
 import { openRecipeModal } from '../features/renderRecipeModal.js';
 import { searchMealsByName } from '../services/mealdb.js';
@@ -18,20 +18,23 @@ export const initSearchByDishName = () => {
     }
 
     const name = input.value.trim();
+    try {
+      const recipes = await searchMealsByName(name);
 
-    const recipes = await searchMealsByName(name);
+      if (recipes.length === 0) {
+        renderNoResults('.discover-list');
+        input.value = '';
+        return;
+      }
 
-    if (recipes.length === 0) {
-      renderNoResults('.discover-list');
+      renderRecipeList(recipes, '.discover-list');
+
+      if (recipes.length === 1) {
+        openRecipeModal(recipes[0]);
+      }
       input.value = '';
-      return;
+    } catch (error) {
+      getErrorMessage(error);
     }
-
-    renderRecipeList(recipes, '.discover-list');
-
-    if (recipes.length === 1) {
-      openRecipeModal(recipes[0]);
-    }
-    input.value = '';
   });
 };
