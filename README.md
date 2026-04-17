@@ -1,50 +1,81 @@
 
 # Cookbook (A Recipe Web App)
 
-**Cookbook** is a simple yet delightful recipe web app that brings together two worlds of cooking inspiration:
+**Cookbook** is a single-page recipe web app that brings together two worlds of cooking inspiration:
 
-- **Global Recipes** — Explore thousands of authentic recipes from around the world using *TheMealDB* public API.  
-- **Cohort Favorites** — Discover a curated collection of favorite dishes shared by **c55 cohort members**, featuring personal stories, photos, ingredients, and step-by-step instructions stored in our own database.
+- **Global Recipes** — Explore thousands of authentic recipes from around the world using the *TheMealDB* public API.
+- **Cohort Favorites** — Discover a curated collection of favorite dishes shared by **c55 cohort members**, with photos, country of origin, and step-by-step instructions stored in our own SQLite database.
 
-With Cookbook, users can easily search, browse, and save recipes they love — all in one place.
+With Cookbook, users can search, browse, save, and even get AI-generated recipe suggestions — all in one place.
 
 ***
 
 ### Application Overview
 
-The app is a **single-page application** with three main sections:
+The app is a **single-page application** with four main sections:
 
-- **Recipes:** Browse and search recipes from *TheMealDB API*. Filter by category (e.g., chicken, dessert, vegetarian) and view detailed recipes with full ingredients and instructions.  
-- **Cohort Dishes:** A hand-picked list of favorite dishes from c55 members, each showing a photo, country of origin, and complete recipe. These entries are stored in an **SQLite database**.  
-- **Saved:** A personal list where users can save recipes (from both TheMealDB and cohort dishes) by clicking the ⭐ Save button. Saved recipes are stored in localStorage.
-- **LLM** Chatbot
+- **Discover:** Browse and search recipes from *TheMealDB API*. Filter by category, country, or ingredient. Hit **Surprise me** for a random recipe pick.
+- **C55 Recipes:** A hand-picked list of favorite dishes from c55 cohort members, each showing a photo, country of origin, and complete recipe. Filter by dish name, country, or who added it. Entries are stored in an **SQLite database**.
+- **Saved:** A personal favorites list where users can save recipes from both sources by clicking the ⭐ Save button. Saved recipes are stored in **localStorage**.
+- **AI Chat:** A floating chat assistant (bottom-right corner) powered by **GPT-4.1** via GitHub's model inference API. Ask it for recipe ideas and it returns a structured recipe with title and instructions.
+
+The app also supports a **dark / light theme toggle**, with the preference saved in localStorage.
+
+***
+
+### Architecture
+
+<div align="center">
+  <img src="public/img/readme/app_architecture.png" alt="App Architecture" />
+</div>
+
+***
+
+### Screenshots
+
+#### Desktop
+
+<div align="center">
+  <img src="public/img/readme/app1.png" alt="App Screenshot 1" />
+  <img src="public/img/readme/app2.png" alt="App Screenshot 2" />
+  <img src="public/img/readme/app3.png" alt="App Screenshot 3" />
+</div>
+
+#### Mobile
+
+<div align="center">
+  <img src="public/img/readme/app_mobile.png" alt="App Mobile" />
+</div>
 
 ***
 
 ### Getting Started
 
-1. Clone the repository  
-2. Run `npm install` to install dependencies  
-3. Run `npm start` to start the app  
+1. Clone the repository
+2. Run `npm install` to install dependencies
+3. Set the `GH_TOKEN` environment variable with a GitHub token that has access to GitHub model inference (required for the AI chat feature)
+4. Run `npm start` to start the app
 
-Explore the starter project here:  
+Explore the starter project here:
 [https://hub.hackyourfuture.nl/core-program-week-14](https://hub.hackyourfuture.nl/core-program-week-14)
 
 ***
 
 ### Code Quality
 
-- Run `npm run lint` to check for linting issues  
+- Run `npm run lint` to check for linting issues (ESLint)
 - Run `npm run format` to format code using **Prettier**
 
 ***
 
 ### Testing
 
-Run all tests with:  
+Run all tests with:
 ```
 npm test
 ```
+
+Uses **Vitest** as the test runner and **Supertest** for HTTP endpoint testing.
 
 ***
 
@@ -70,3 +101,20 @@ To reduce this delay, an external cron job is configured to periodically ping th
 
 ***
 
+### Team & Collaboration
+
+Our project was a collaborative effort with clearly defined responsibilities across both frontend and backend development, as well as project coordination and quality assurance.
+
+- **Diana Chukhrai** led the backend data layer and AI integration. She designed the SQLite database schema, implemented cohort API routes with filtering, wrote backend tests, and built the AI chat feature using GPT-4.1. She also contributed to the frontend by developing the chat UI, including the floating bubble, popup, and card rendering.
+
+- **Hamed Razizadeh** focused on external API integration and user-centric features. He implemented TheMealDB API services and routes, developed the favorites functionality using localStorage, and handled UI rendering and modal integration for favorites. He also contributed comprehensive unit and integration tests and implemented ingredient sorting.
+
+- **Yana Pechenenko** was responsible for the entire frontend architecture and user experience. She built the HTML structure, configured Vite, and implemented all styling. Her work includes cohort recipe rendering, search and filter interfaces, recipe modal, dark/light theme toggle, and mobile navigation.
+
+- **Yusup Rozimemet** set up the project structure (based on discussions following the first standup meeting) and the Express server, configured CI/CD pipelines, and integrated Supertest (following Jim’s suggestion). He maintained the README and actively supported team collaboration and communication, helping ensure smooth progress. He also contributed through code reviews, bug fixing, and providing constructive feedback to prevent future issues.
+
+- **Jim Cramer (Coach)** provided guidance and quality oversight throughout the project. He conducted code reviews, helped set up type checking, configured Prettier, and introduced Morgan middleware for improved logging. The team greatly appreciated his timely feedback and proactive support, which helped identify issues early and prevent larger problems down the line.
+
+
+
+***
