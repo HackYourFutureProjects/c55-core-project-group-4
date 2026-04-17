@@ -105,16 +105,17 @@ To reduce this delay, an external cron job is configured to periodically ping th
 
 Our project was a collaborative effort with clearly defined responsibilities across both frontend and backend development, as well as project coordination and quality assurance.
 
-- **Diana Chukhrai** led the backend data layer and AI integration. She designed the SQLite database schema, implemented cohort API routes with filtering, wrote backend tests, and built the AI chat feature using GPT-4.1. She also contributed to the frontend by developing the chat UI, including the floating bubble, popup, and card rendering.
+- **Diana Chukhrai** led the backend data layer and AI integration. She designed the SQLite database schema, implemented cohort API routes with filtering, wrote backend tests, and built the AI chat feature using GPT-4.1. She also contributed to the frontend by developing the chat UI, including the floating bubble, popup, and card rendering. She proactively reached out to everyone to establish the project idea and divide responsibilities early, which we believe was essential for a strong project kickoff.
 
 - **Hamed Razizadeh** focused on external API integration and user-centric features. He implemented TheMealDB API services and routes, developed the favorites functionality using localStorage, and handled UI rendering and modal integration for favorites. He also contributed comprehensive unit and integration tests and implemented ingredient sorting.
 
-- **Yana Pechenenko** was responsible for the entire frontend architecture and user experience. She built the HTML structure, configured Vite, and implemented all styling. Her work includes cohort recipe rendering, search and filter interfaces, recipe modal, dark/light theme toggle, and mobile navigation.
+- **Yana Pechenenko** was responsible for the entire frontend architecture and user experience. She built the HTML structure, configured Vite, and implemented all styling. Her work included cohort recipe rendering, search and filter interfaces, the recipe modal, the light/dark theme toggle, and mobile navigation. Yana did most of the heavy lifting on the frontend.
 
-- **Yusup Rozimemet** set up the project structure (based on discussions following the first standup meeting) and the Express server, configured CI/CD pipelines, and integrated Supertest (following Jim’s suggestion). He maintained the README and actively supported team collaboration and communication, helping ensure smooth progress. He also contributed through code reviews, bug fixing, and providing constructive feedback to prevent future issues.
 
-- **Jim Cramer (Coach)** provided guidance and quality oversight throughout the project. He conducted code reviews, helped set up type checking, configured Prettier, and introduced Morgan middleware for improved logging. The team greatly appreciated his timely feedback and proactive support, which helped identify issues early and prevent larger problems down the line.
+- **Yusup Rozimemet** set up the project structure based on discussions following the first standup meeting and configured the Express server, CI/CD pipelines, and Supertest integration following Jim’s suggestion. He maintained the README and actively supported team collaboration and communication, helping ensure smooth progress. He also contributed through code reviews, bug fixing, and constructive feedback to help prevent future issues. His main goal was to keep the project moving forward and avoid getting stuck.
 
+
+- **Jim Cramer (Coach)** provided guidance and quality oversight throughout the project. He conducted code reviews, helped set up type checking, configured Prettier, and introduced Morgan middleware for improved logging. The team greatly appreciated his timely feedback and proactive support, which helped identify issues early and prevent larger problems later on.
 
 
 ***
