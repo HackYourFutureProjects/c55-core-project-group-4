@@ -1,9 +1,7 @@
-
-// This function sends the user's message to the server
+// This function sends the user's message to the backend
 // and returns the AI recipe suggestion
 export async function fetchChatReply(userMessage) {
-
-  // Send a POST request to our backend endpoint
+  // Send a POST request to our backend /api/chat endpoint
   const response = await fetch('/api/chat', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -11,11 +9,16 @@ export async function fetchChatReply(userMessage) {
     body: JSON.stringify({ userMessage }),
   });
 
-  // Parse the response from JSON text into a JavaScript object
+  // If not res ok, the server might return HTML instead of JSON (e.g. network error)
+  // so we use .catch(() => ({})) to avoid a parse error
+  if (!response.ok) {
+    const data = await response.json().catch(() => ({}));
+    throw new Error(data.error || 'Server error');
+  }
+
+  // Only parse JSON if the response is successful
   const data = await response.json();
-if (!response.ok) {
-  throw new Error(data.error || 'Server error');
-}
-  // Return only the recipe reply, not the whole response object
+
+  // Return only the reply text, not the whole response object
   return data.reply;
 }

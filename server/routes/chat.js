@@ -2,7 +2,7 @@ import OpenAI from 'openai';
 import express from 'express';
 import { prompt } from '../utils/prompt.js';
 
-// Create a new router instance for cohort routes
+// Create a new router instance for chat routes
 const router = express.Router();
 
 function getOpenAIClient() {
@@ -12,16 +12,18 @@ function getOpenAIClient() {
   });
 }
 
-
 // POST /api/chat
 router.post('/', async (req, res) => {
   try {
     const openai = getOpenAIClient();
+
     // Get the user's message from the request body
     const { userMessage } = req.body;
+
+    // Return 400 if userMessage is missing
     if (!userMessage) {
-  throw new Error('userMessage is required');
-}
+      return res.status(400).json({ error: 'userMessage is required' });
+    }
 
     const response = await openai.chat.completions.create({
       model: 'openai/gpt-4.1',
@@ -32,16 +34,21 @@ router.post('/', async (req, res) => {
       temperature: 0.7,
       response_format: { type: 'json_object' },
     });
-    //Extract the AI's reply from the response
+
+    // Extract the AI's reply from the response
     const content = response.choices[0].message.content;
+
     // Parse the JSON string into a JavaScript object
     const parsed = JSON.parse(content);
-    // If parsed response is missing required fields — throw an error
-if (!parsed.title || !parsed.instructions) {
-  throw new Error('Invalid response format from AI');
-}
-     // Send the reply back to the frontend
-res.json({ reply: parsed });
+
+    // If parsed response is missing required fields — return error
+    if (!parsed.title || !parsed.instructions) {
+      throw new Error('Invalid response format from AI');
+    }
+
+    // Send the reply back to the frontend
+    res.json({ reply: parsed });
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ error: 'Failed to get AI response' });
