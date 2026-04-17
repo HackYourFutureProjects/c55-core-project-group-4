@@ -9,12 +9,14 @@ export async function fetchChatReply(userMessage) {
     body: JSON.stringify({ userMessage }),
   });
 
-  // If not res ok, the server might return HTML instead of JSON (e.g. network error)
-  // so we use .catch(() => ({})) to avoid a parse error
+  // Check response status before parsing — server may return HTML on error
   if (!response.ok) {
-    const data = await response.json().catch(() => ({}));
-    throw new Error(data.error || 'Server error');
-  }
+  const data = await response.json().catch((parseError) => {
+    console.warn('Failed to parse error body:', parseError.message);
+    return {};
+  });
+  throw new Error(data.error || 'Server error');
+}
 
   // Only parse JSON if the response is successful
   const data = await response.json();
