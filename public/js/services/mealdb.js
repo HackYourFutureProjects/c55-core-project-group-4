@@ -146,9 +146,12 @@ async function getAreas() {
  */
 async function getIngredients() {
   const data = await fetchJson(`${BASE_URL}/list.php?i=list`);
-  return (data.meals || []).map(
-    (/** @type {IngredientItem} */ item) => item.strIngredient
-  );
+  return (data.meals || [])
+    .map((/** @type {IngredientItem} */ item) => item.strIngredient)
+    .filter(Boolean)
+    .sort((/** @type {string} */ a, /** @type {string} */ b) =>
+      a.localeCompare(b)
+    );
 }
 
 /**
