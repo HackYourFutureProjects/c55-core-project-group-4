@@ -1,4 +1,8 @@
-import { getErrorMessage } from '../features/helpers.js';
+import {
+  getErrorMessage,
+  handleCohortClick,
+  handleMealDBClick,
+} from '../features/helpers.js';
 import {
   renderRecipeList,
   resetOtherSelects,
@@ -21,6 +25,9 @@ export const initFilters = (
   const select = document.querySelector(id);
   if (!select) return;
 
+  const clickHandler =
+    source === 'cohort' ? handleCohortClick : handleMealDBClick;
+
   select.addEventListener('change', async () => {
     const value = select.value;
 
@@ -30,12 +37,12 @@ export const initFilters = (
         const allRecipes =
           source === 'cohort' ? await fetchAllCohortRecipes() : [];
 
-        renderRecipeList(allRecipes, listClass, source);
+        renderRecipeList(allRecipes, listClass, clickHandler);
         return;
       }
 
       const recipes = await filterFunction(value);
-      renderRecipeList(recipes, listClass, source);
+      renderRecipeList(recipes, listClass, clickHandler);
     } catch (error) {
       getErrorMessage(error);
     }

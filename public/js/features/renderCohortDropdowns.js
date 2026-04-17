@@ -6,7 +6,7 @@ import {
 import { renderSelectOptions } from './renderDropdowns.js';
 
 export const renderByDishNameCohort = async () => {
-  renderSelectOptions(
+  await renderSelectOptions(
     getDishNameOptionsCohort,
     '#cohort-title-select',
     'a dish name'
@@ -14,7 +14,7 @@ export const renderByDishNameCohort = async () => {
 };
 
 export const renderAddedByCohort = async () => {
-  renderSelectOptions(
+  await renderSelectOptions(
     getAddedByOptionsCohort,
     '#cohort-added-select',
     'an author'
@@ -22,7 +22,7 @@ export const renderAddedByCohort = async () => {
 };
 
 export const renderCountryCohort = async () => {
-  renderSelectOptions(
+  await renderSelectOptions(
     getCountryOptionsCohort,
     '#cohort-country-select',
     'a country'

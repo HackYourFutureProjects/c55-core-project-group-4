@@ -1,5 +1,18 @@
 import { createElement } from '../components/createElement.js';
 import { createToast } from '../components/createToast.js';
+import { fetchCohortRecipeById } from '../services/cohort.js';
+import { getMealById } from '../services/mealdb.js';
+import { openRecipeModal } from './renderRecipeModal.js';
+
+export const handleMealDBClick = async (recipe) => {
+  const info = await getMealById(recipe.id);
+  openRecipeModal(info, 'mealdb');
+};
+
+export const handleCohortClick = async (recipe) => {
+  const info = await fetchCohortRecipeById(recipe.id);
+  openRecipeModal(info, 'cohort');
+};
 
 export const createPlaceholderOption = (text) => {
   const option = document.createElement('option');

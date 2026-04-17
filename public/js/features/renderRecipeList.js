@@ -1,10 +1,7 @@
 import { createListCard } from '../components/createRecipeListCard.js';
-import { fetchCohortRecipeById } from '../services/cohort.js';
-import { getMealById } from '../services/mealdb.js';
 import { getErrorMessage } from './helpers.js';
-import { openRecipeModal } from './renderRecipeModal.js';
 
-export const renderRecipeList = (recipes, listClass, source = 'mealdb') => {
+export const renderRecipeList = (recipes, listClass, clickHandler) => {
   const list = document.querySelector(listClass);
   if (!list) return;
 
@@ -15,11 +12,7 @@ export const renderRecipeList = (recipes, listClass, source = 'mealdb') => {
 
     card.addEventListener('click', async () => {
       try {
-        const recipeInfo =
-          source === 'mealdb'
-            ? await getMealById(recipe.id)
-            : await fetchCohortRecipeById(recipe.id);
-        openRecipeModal(recipeInfo, source);
+        await clickHandler(recipe);
       } catch (error) {
         getErrorMessage(error);
       }
@@ -43,7 +36,7 @@ export const selectsMealDBArray = [
 
 export const resetOtherSelects = (expectId, selects) => {
   selects
-    .filter((id) => id != expectId)
+    .filter((id) => id !== expectId)
     .forEach((id) => {
       const select = document.querySelector(id);
       if (select) select.value = '';
