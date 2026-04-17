@@ -1,6 +1,7 @@
 import { createListCard } from '../components/createRecipeListCard.js';
 import { fetchCohortRecipeById } from '../services/cohort.js';
 import { getMealById } from '../services/mealdb.js';
+import { getErrorMessage } from './helpers.js';
 import { openRecipeModal } from './renderRecipeModal.js';
 
 export const renderRecipeList = (recipes, listClass, source = 'mealdb') => {
@@ -13,12 +14,17 @@ export const renderRecipeList = (recipes, listClass, source = 'mealdb') => {
     const card = createListCard(recipe);
 
     card.addEventListener('click', async () => {
-      const recipeInfo =
-        source === 'mealdb'
-          ? await getMealById(recipe.id)
-          : await fetchCohortRecipeById(recipe.id);
-      openRecipeModal(recipeInfo, source);
+      try {
+        const recipeInfo =
+          source === 'mealdb'
+            ? await getMealById(recipe.id)
+            : await fetchCohortRecipeById(recipe.id);
+        openRecipeModal(recipeInfo, source);
+      } catch (error) {
+        getErrorMessage(error);
+      }
     });
+
     list.append(card);
   });
 };

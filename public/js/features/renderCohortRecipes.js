@@ -3,6 +3,7 @@ import {
   fetchAllCohortRecipes,
   fetchCohortRecipeById,
 } from '../services/cohort.js';
+import { getErrorMessage } from './helpers.js';
 import { openRecipeModal } from './renderRecipeModal.js';
 
 export const renderCohortRecipes = async () => {
@@ -11,15 +12,23 @@ export const renderCohortRecipes = async () => {
 
   list.replaceChildren();
 
-  const recipes = await fetchAllCohortRecipes();
+  try {
+    const recipes = await fetchAllCohortRecipes();
 
-  recipes.forEach((recipe) => {
-    const card = createListCard(recipe);
+    recipes.forEach((recipe) => {
+      const card = createListCard(recipe);
 
-    card.addEventListener('click', async () => {
-      const recipeInfo = await fetchCohortRecipeById(recipe.id);
-      openRecipeModal(recipeInfo, 'cohort');
+      card.addEventListener('click', async () => {
+        try {
+          const recipeInfo = await fetchCohortRecipeById(recipe.id);
+          openRecipeModal(recipeInfo, 'cohort');
+        } catch (error) {
+          getErrorMessage(error);
+        }
+      });
+      list.append(card);
     });
-    list.append(card);
-  });
+  } catch (error) {
+    getErrorMessage(error);
+  }
 };

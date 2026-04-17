@@ -4,6 +4,7 @@ import { createElement } from '../components/createElement.js';
 import { createRecipeInfoCard } from '../components/createRecipeInfoCard.js';
 import { getMealById } from '../services/mealdb.js';
 import { isRecipeSaved, toggleFavourite } from '../services/favourites.js';
+import { createToast } from '../components/createToast.js';
 
 let isRecipeModalInitialized = false;
 
@@ -75,6 +76,16 @@ export function openRecipeModal(recipe, source = 'mealdb') {
 
   favBtn.addEventListener('click', () => {
     toggleFavourite(recipe, source);
+
+    const isSaved = isRecipeSaved(recipe.id, source);
+
+    createToast(
+      'success',
+      isSaved
+        ? 'Successfully added to favorites ⭐'
+        : 'Successfully removed from favorites ✖'
+    );
+
     favBtn.textContent = getFavoriteButtonText(recipe, source);
     document.dispatchEvent(new Event('favoritesUpdated'));
   });
