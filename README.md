@@ -51,13 +51,16 @@ The app also supports a **dark / light theme toggle**, with the preference saved
 
 ### Getting Started
 
+**Requirements:** Node.js v18 or higher (the project was developed on v24).
+
 1. Clone the repository
 2. Run `npm install` to install dependencies
-3. Set the `GH_TOKEN` environment variable with a GitHub token that has access to GitHub model inference (required for the AI chat feature)
+3. Create a `.env` file in the project root and add your GitHub token:
+   ```
+   GH_TOKEN=your_github_token_here
+   ```
+   The token needs access to [GitHub model inference](https://github.com/marketplace/models). Without it the AI chat feature will not work, but the rest of the app runs fine.
 4. Run `npm start` to start the app
-
-Explore the starter project here:
-[https://hub.hackyourfuture.nl/core-program-week-14](https://hub.hackyourfuture.nl/core-program-week-14)
 
 ***
 
@@ -75,7 +78,11 @@ Run all tests with:
 npm test
 ```
 
-Uses **Vitest** as the test runner and **Supertest** for HTTP endpoint testing.
+Uses **Vitest** as the test runner and **Supertest** for HTTP endpoint testing. The test suite covers:
+
+- **`cohort.test.js`** — backend API endpoints (`/api/cohort/*`) via Supertest: fetching all recipes, filtering by area/title/contributor, and fetching by ID
+- **`favourites.test.js`** — unit tests for the localStorage-based favourites service: save, remove, toggle, and duplicate prevention
+- **`mealdb.test.js`** — unit tests for the TheMealDB service functions: search, filter, and data normalization
 
 ***
 
@@ -101,13 +108,33 @@ To reduce this delay, an external cron job is configured to periodically ping th
 
 ***
 
+### Possible Future Improvements
+
+These are ideas we considered but didn't implement within the project scope — natural next steps if the project were to grow:
+
+- **Database upgrade** — Replace SQLite with **PostgreSQL** (relational, production-ready) or **MongoDB** (flexible schema). SQLite works well for a small static dataset like ours but doesn't scale well for concurrent writes or a growing recipe collection.
+
+- **User authentication** — Add login/signup so users can have their own accounts. This would also allow moving saved favorites from **localStorage** (device-specific) to a database (synced across devices).
+
+- **Admin panel for cohort recipes** — Currently cohort recipes are seeded via SQL. A simple authenticated admin UI would allow adding, editing, or removing dishes without touching the database directly.
+
+- **Proper deployment** — Move off the **Render Free Tier** to a paid plan (or a different provider like Railway, Fly.io, or a VPS) to eliminate the cold-start delay and the need for a keep-alive cron job.
+
+- **Rate limiting on the AI chat endpoint** — The `/api/chat` route is currently unprotected. Adding rate limiting (e.g. via `express-rate-limit`) would prevent abuse of the GitHub model inference quota.
+
+- **Chat history / conversation context** — The AI chat currently sends only the latest message. Passing previous messages would allow multi-turn conversations (e.g. "make it vegetarian" as a follow-up).
+
+- **Frontend bundling** — Currently Vite is used in dev mode only. Setting up a proper Vite production build would reduce asset size and improve load time in production.
+
+***
+
 ### Team & Collaboration
 
 Our project was a collaborative effort with clearly defined responsibilities across both frontend and backend development, as well as project coordination and quality assurance.
 
-- **Diana Chukhrai** led the backend data layer and AI integration. She designed the SQLite database schema, implemented cohort API routes with filtering, wrote backend tests, and built the AI chat feature using GPT-4.1. She also contributed to the frontend by developing the chat UI, including the floating bubble, popup, and card rendering. She proactively reached out to everyone to establish the project idea and divide responsibilities early, which we believe was essential for a strong project kickoff.
+- **Diana Chukhrai** led the backend data layer and AI integration. She designed the SQLite database schema, implemented cohort API routes with filtering, wrote backend tests, and built the AI chat feature using GPT-4.1. She also contributed to the frontend by developing the chat UI, including the floating bubble, popup, and card rendering. She proactively reached out to everyone to establish the project idea and suggestion of division of responsibilities early, which we believe was essential for a strong project kickoff.
 
-- **Hamed Razizadeh** focused on external API integration and user-centric features. He implemented TheMealDB API services and routes, developed the favorites functionality using localStorage, and handled UI rendering and modal integration for favorites. He also contributed comprehensive unit and integration tests and implemented ingredient sorting.
+- **Hamed Razizadeh** focused on external API integration and user-centric features. He implemented TheMealDB API services and routes, developed the favorites functionality using localStorage, and handled UI rendering and modal integration for favorites. He also contributed comprehensive unit tests and implemented ingredient sorting.
 
 - **Yana Pechenenko** was responsible for the entire frontend architecture and user experience. She built the HTML structure, configured Vite, and implemented all styling. Her work included cohort recipe rendering, search and filter interfaces, the recipe modal, the light/dark theme toggle, and mobile navigation. Yana did most of the heavy lifting on the frontend.
 
@@ -119,3 +146,7 @@ Our project was a collaborative effort with clearly defined responsibilities acr
 
 
 ***
+
+### License
+
+This project is open source and available under the [MIT License](LICENSE).
