@@ -135,6 +135,15 @@ VALUES
   'https://app.ckbk.com/images/v5/eyJrZXkiOiJpbWFnZXMvaXNsYTM4MjA4YzE4czAwMXIwMDFnMDEuanBnIiwiZWRpdHMiOnsicmVzaXplIjp7IndpZHRoIjoxMDAwLCJoZWlnaHQiOjEwMDAsImZpdCI6Imluc2lkZSJ9fX0=?signature=143a0d7890e77d56fad79f0360daf57691cdfa492b91386ad9954b51ecc86734',
   '[{"ingredient": "all-purpose flour", "measure": "3 cups"}, {"ingredient": "eggs", "measure": "4 pcs"}, {"ingredient": "water", "measure": "1 cup"}, {"ingredient": "ghee", "measure": "0.5 cup"}, {"ingredient": "honey", "measure": "0.5 cup"}, {"ingredient": "black seeds (Nigella seeds)", "measure": "1 tbsp"}, {"ingredient": "salt", "measure": "0.5 tsp"}]',
   'Marah'
+),
+(
+  'Biryani',
+  'Rice dish',
+  'Indian',
+  'Wash the rice and soak it for 30 minutes, then drain. Heat oil or ghee in a pot, add sliced onions and fry until golden brown. Add ginger and garlic paste and cook for 1–2 minutes. Add chicken pieces and cook until they change color. Add tomatoes, yogurt, turmeric, cumin, coriander, chili powder, and salt. Cook until the chicken is well cooked and the masala becomes thick. In a separate pot, boil water, add salt and the soaked rice, and cook until 70% done, then drain. Layer the partially cooked rice over the chicken mixture. Add chopped coriander and mint leaves on top. Cover the pot and cook on low heat for 20–25 minutes (dum cooking) until the rice is fully cooked and flavors are combined. Serve hot.',
+  'https://www.indianhealthyrecipes.com/wp-content/uploads/2021/12/chicken-biryani.jpg',
+  '[{"ingredient": "basmati rice", "measure": "500g"}, {"ingredient": "chicken", "measure": "500g"}, {"ingredient": "onions", "measure": "2 pcs"}, {"ingredient": "tomatoes", "measure": "2 pcs"}, {"ingredient": "yogurt", "measure": "3 tbsp"}, {"ingredient": "cooking oil or ghee", "measure": "3 tbsp"}, {"ingredient": "garlic paste", "measure": "2 tsp"}, {"ingredient": "ginger paste", "measure": "2 tsp"}, {"ingredient": "turmeric powder", "measure": "1 tsp"}, {"ingredient": "cumin powder", "measure": "2 tsp"}, {"ingredient": "coriander powder", "measure": "2 tsp"}, {"ingredient": "garam masala", "measure": "1 tsp"}, {"ingredient": "chili powder", "measure": "1 tsp"}, {"ingredient": "fresh coriander leaves", "measure": "handful"}, {"ingredient": "fresh mint leaves", "measure": "handful"}, {"ingredient": "water", "measure": "750ml"}, {"ingredient": "salt", "measure": "to taste"}]',
+  'Muna'
 );
 
   
