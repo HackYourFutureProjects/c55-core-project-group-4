@@ -72,10 +72,10 @@ export const getErrorMessage = (err) => {
 
   switch (true) {
     case status === 400:
-      return createToast('warning', 'Invalid request ❗');
+      return createToast('error', 'Invalid request ❗');
 
     case status === 404:
-      return createToast('warning', 'Recipe not found 🔍');
+      return createToast('error', 'Recipe not found 🔍');
 
     case status === 500:
       return createToast('error', 'Server error. Please try again later ⚠️');
