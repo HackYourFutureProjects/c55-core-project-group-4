@@ -1,5 +1,7 @@
 import { createElement } from './createElement.js';
 
+const TOAST_TIMEOUT_MS = 4000;
+
 export const createToast = (className, message) => {
   const container = document.getElementById('toast-container');
 
@@ -12,5 +14,5 @@ export const createToast = (className, message) => {
 
   setTimeout(() => {
     toast.remove();
-  }, 4000);
+  }, TOAST_TIMEOUT_MS);
 };

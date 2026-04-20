@@ -90,6 +90,7 @@ const createInstructions = (recipe) =>
 const createVideo = (recipe) => {
   if (!recipe.youtube) return null;
 
+  // Get the YouTube video ID by splitting on "v=" (works for standard YouTube links)
   const videoId = recipe.youtube.split('v=')[1];
   const embedUrl = `https://www.youtube.com/embed/${videoId}`;
 
