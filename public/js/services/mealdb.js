@@ -1,6 +1,7 @@
 //@ts-check
 //Base URL for TheMealDB API
 const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
+const MAX_INGREDIENTS = 20;
 
 /**
  * @typedef {Record<string, any>} MealData
@@ -19,7 +20,11 @@ const BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
 async function fetchJson(url) {
   const response = await fetch(url);
   if (!response.ok) {
-    throw new Error(`HTTP error! status: ${response.status}`);
+    const data = await response.json().catch(() => ({}));
+    throw {
+      status: response.status,
+      message: data.error || `HTTP error ${response.status}`,
+    };
   }
   return response.json();
 }
@@ -34,7 +39,7 @@ async function fetchJson(url) {
  */
 function extractIngredients(meal) {
   const ingredients = [];
-  for (let i = 1; i <= 20; i++) {
+  for (let i = 1; i <= MAX_INGREDIENTS; i++) {
     const ingredient = meal[`strIngredient${i}`]?.trim();
     const measure = meal[`strMeasure${i}`]?.trim();
 
