@@ -12,11 +12,14 @@ import {
 } from '../public/js/services/mealdb.js';
 
 describe('mealdb service', () => {
+  const originalFetch = global.fetch;
+
   beforeEach(() => {
     global.fetch = vi.fn();
   });
 
   afterEach(() => {
+    global.fetch = originalFetch;
     vi.restoreAllMocks();
   });
 
@@ -90,15 +93,17 @@ describe('mealdb service', () => {
       expect(result).toEqual([]);
     });
 
-    it('throws error when response is not ok', async () => {
+    it('throws structured error when response is not ok', async () => {
       fetch.mockResolvedValue({
         ok: false,
         status: 500,
+        json: async () => ({ error: 'Failed to fetch' }),
       });
 
-      await expect(searchMealsByName('chicken')).rejects.toThrow(
-        'HTTP error! status: 500'
-      );
+      await expect(searchMealsByName('chicken')).rejects.toMatchObject({
+        status: 500,
+        message: 'Failed to fetch',
+      });
     });
   });
 
@@ -182,7 +187,7 @@ describe('mealdb service', () => {
   });
 
   describe('getIngredients', () => {
-    it('returns ingredient names', async () => {
+    it('returns sorted ingredient names', async () => {
       mockFetchResponse({
         meals: [{ strIngredient: 'Chicken' }, { strIngredient: 'Salt' }],
       });
