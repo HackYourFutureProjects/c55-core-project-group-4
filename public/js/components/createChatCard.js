@@ -2,7 +2,7 @@ import { createElement } from "./createElement.js";
 
 
 export const createChatCard = (recipe) => {
-  const card = createElement('div', {class: 'chat-recipe'});
+  const chatCard = createElement('div', { class: 'chat-recipe' });
 
   const title = createElement('h3',{text: recipe.title});
   
@@ -17,6 +17,6 @@ export const createChatCard = (recipe) => {
     ul.append(li);
   });
 
-  card.append(title, instructions, ul);
-  return card;
+  chatCard.append(title, instructions, ul);
+  return chatCard;
 };
